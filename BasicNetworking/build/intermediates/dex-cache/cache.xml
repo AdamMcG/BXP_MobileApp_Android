@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/testing/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.2/support-annotations-21.0.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="99373741f99a0556ee293c41e8faa1ca3ae8a4e6">
+        <dex dex="/Users/testing/Desktop/AndroidStudioProjects/BasicNetworking/Application/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-fb600750a0d0e80d437dff27a2a08f06c4c53f00.jar" />
+    </item>
+    <item
+        jar="/Users/testing/Desktop/AndroidStudioProjects/BasicNetworking/Application/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d1bf02de1c56d942e7a9d093b8610ba1ef4128e3">
+        <dex dex="/Users/testing/Desktop/AndroidStudioProjects/BasicNetworking/Application/build/intermediates/pre-dexed/debug/classes-fe91eda056ce03ed08936683690fb6c1c2a3a69d.jar" />
+    </item>
+    <item
+        jar="/Users/testing/Desktop/AndroidStudioProjects/BasicNetworking/Application/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.2/jars/libs/internal_impl-21.0.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="962e8b12569c56dbdcf8367eb4eac8bb129cd18f">
+        <dex dex="/Users/testing/Desktop/AndroidStudioProjects/BasicNetworking/Application/build/intermediates/pre-dexed/debug/internal_impl-21.0.2-0504538dce7729d8a639febf7752f4cb6005bb93.jar" />
+    </item>
+
+</items>
