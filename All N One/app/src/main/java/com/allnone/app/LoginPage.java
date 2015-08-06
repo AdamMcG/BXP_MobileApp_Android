@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-
+import com.allnone.app.Controller.HTTPClientClass;
 import com.allnone.app.allnone.R;
 
 
@@ -21,6 +21,7 @@ public class LoginPage extends Activity {
     }
 
     public void onButtonClick(View v) {
+
         if (v.getId() == R.id.Alogin)
         {
             EditText a = (EditText)findViewById(R.id.TFusername);
