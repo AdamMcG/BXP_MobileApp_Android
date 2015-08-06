@@ -39,5 +39,5 @@ public class Login {
         instance.strPassword = password;
 
     }
-    
+
 }
