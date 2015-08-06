@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.allnone.app"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="All N One"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.allnone.app.RssActivity"
+            android:label="All N One" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.allnone.app.LoginPage"
+            android:label="@string/title_activity_login_page"
+            android:parentActivityName="com.allnone.app.RssActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.allnone.app.RssActivity" />
+        </activity>
+        <activity
+            android:name="com.allnone.app.HomePage"
+            android:label="@string/title_activity_home_page"
+            android:parentActivityName="com.allnone.app.LoginPage" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.allnone.app.LoginPage" />
+        </activity>
+        <activity
+            android:name="com.allnone.app.Contacts"
+            android:label="@string/title_activity_contacts"
+            android:parentActivityName="com.allnone.app.HomePage" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.allnone.app.HomePage" />
+        </activity>
+        <activity
+            android:name="com.allnone.app.Critical"
+            android:label="@string/title_activity_critical"
+            android:parentActivityName="com.allnone.app.HomePage" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.allnone.app.HomePage" />
+        </activity>
+        <activity
+            android:name="com.allnone.app.Settings"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName="com.allnone.app.HomePage" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.allnone.app.HomePage" />
+        </activity>
+        <activity
+            android:name="com.allnone.app.Ticket"
+            android:label="@string/title_activity_ticket"
+            android:parentActivityName="com.allnone.app.HomePage" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.allnone.app.HomePage" />
+        </activity>
+        <activity
+            android:name="com.allnone.app.Today"
+            android:label="@string/title_activity_today"
+            android:parentActivityName="com.allnone.app.HomePage" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.allnone.app.HomePage" />
+        </activity>
+        <activity
+            android:name="com.allnone.app.ToDo"
+            android:label="@string/title_activity_to_do"
+            android:parentActivityName="com.allnone.app.HomePage" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.allnone.app.HomePage" />
+        </activity>
+        <activity
+            android:name="com.allnone.app.Tomorrow"
+            android:label="@string/title_activity_tomorrow"
+            android:parentActivityName="com.allnone.app.HomePage" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.allnone.app.HomePage" />
+        </activity>
+        <activity
+            android:name="com.allnone.app.DetailsActivity"
+            android:label="@string/title_activity_details" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

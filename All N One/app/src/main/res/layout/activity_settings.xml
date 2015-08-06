@@ -1,0 +1,64 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.allnone.app.allnone.Settings">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Settings"
+        android:id="@+id/textView_latestNews"
+        android:layout_alignParentTop="true" />
+
+    <EditText
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_systemdefault"
+        android:layout_centerHorizontal="true"
+        android:hint="Default System"
+        android:layout_marginBottom="10dp"
+        android:gravity="bottom" />
+
+        <EditText
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_userdefault"
+            android:layout_below="@+id/editText_systemdefault"
+            android:layout_centerHorizontal="true"
+            android:hint="Default Username"
+            android:layout_marginBottom="20dp"
+            android:gravity="bottom" />
+    <Button
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Store Settings"
+        android:id="@+id/button_storeset"
+        />
+
+    <Button
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get Config File"
+        android:id="@+id/button_getconfig" />
+
+    <Button
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset all settings"
+        android:id="@+id/button_reset" />
+
+
+    </LinearLayout>
+</RelativeLayout>
