@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.allnone.app.Models.Login;
+import com.allnone.app.Models.diary;
 import com.allnone.app.allnone.R;
 
 
@@ -51,11 +52,15 @@ public class HomePage extends Activity {
 
     public void loadToday(View view) {
         Intent intent = new Intent(this, Today.class);
+        diary testing = new diary();
+        intent.putExtra("Today's Diary", testing);
         startActivity(intent);
     }
 
     public void loadTomorrow(View view) {
         Intent intent = new Intent(this, Tomorrow.class);
+        diary tomorrow = new diary();
+        intent.putExtra("Tomorrow Diary", tomorrow);
         startActivity(intent);
     }
 

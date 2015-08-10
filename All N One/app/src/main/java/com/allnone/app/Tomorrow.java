@@ -6,16 +6,24 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 
+import com.allnone.app.Models.diary;
 import com.allnone.app.allnone.R;
 
 
 public class Tomorrow extends Activity {
-
+    ListView tomorrowAppointment;
+    ListView tomorrowListee;
+    diary tomorrowDiary;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tomorrow);
+        Intent i = getIntent();
+        tomorrowDiary = (diary) i.getSerializableExtra("Tomorrow Diary");
+        tomorrowAppointment = (ListView) findViewById(R.id.tomorrow_AppointmentList);
+        tomorrowListee = (ListView) findViewById(R.id.tomorrow_listeeList);
     }
 
 
@@ -33,10 +41,7 @@ public class Tomorrow extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
 
-        return super.onOptionsItemSelected(item);
     }
 }

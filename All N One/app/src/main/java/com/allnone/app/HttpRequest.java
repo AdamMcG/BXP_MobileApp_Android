@@ -16,7 +16,6 @@ import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.util.List;
 
-
 public class HttpRequest {
     private StringBuilder strResponseFromCall = new StringBuilder();
 
@@ -44,7 +43,6 @@ public class HttpRequest {
         return result.toString();
     }
 
-
     public void fnHttpPost(String function, String params) {
         HttpURLConnection myHttpclient = null;
         try {
@@ -53,7 +51,6 @@ public class HttpRequest {
             byte[] postData = databuffer.array();
             int dataLength = postData.length;
             myHttpclient = (HttpURLConnection) url.openConnection();
-
             myHttpclient.setDoOutput(true);
             myHttpclient.setInstanceFollowRedirects(false);
             myHttpclient.setRequestMethod("POST");
@@ -63,7 +60,6 @@ public class HttpRequest {
             myHttpclient.setUseCaches(false);
             myHttpclient.getOutputStream().write(postData);
             int response = myHttpclient.getResponseCode();
-
             if (response == HttpURLConnection.HTTP_OK) {
                 InputStream ioResponseStream = myHttpclient.getInputStream();
                 InputStreamReader ioStreamReader = new InputStreamReader(ioResponseStream);
