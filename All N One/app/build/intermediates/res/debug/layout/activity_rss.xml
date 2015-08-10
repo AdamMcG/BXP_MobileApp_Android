@@ -2,17 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RssTabsActivity"
-    android:background="#ffc3fff8">
+    android:background="#ffc3fff8"
+    tools:context=".RssTabsActivity">
 
     <TextView
+        android:id="@+id/textView_latestNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Latest News"
-        android:id="@+id/textView_latestNews"
         android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="Latest News"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ListView
         android:id="@+id/listMView"
@@ -23,25 +23,25 @@
     </ListView>
 
     <Button
+        android:id="@+id/button_login1"
         android:layout_width="75dp"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/button_login1"
-        android:layout_gravity="center_horizontal"
-        android:onClick="toLogin"
-        android:background="#ff5176ff"
-        android:textStyle="bold|italic"
-        android:visibility="visible"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:background="#ff5176ff"
+        android:onClick="toLogin"
+        android:text="Login"
+        android:textStyle="bold|italic"
+        android:visibility="visible" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="70dp"
-        android:id="@+id/imageView"
-        android:src="@drawable/bxp_homepage_banner"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:src="@drawable/bxp_homepage_banner" />
 
 
 </RelativeLayout><!-- From: file:/Users/testing/Desktop/AndroidStudioProjects/All%20N%20One/app/src/main/res/layout/activity_rss.xml -->

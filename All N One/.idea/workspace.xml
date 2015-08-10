@@ -55,75 +55,30 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c67f11f-42ba-4275-a69a-20d0410e49d6" name="Default" comment="Commit 7: decided to redo HTTP methods, mainly because I didn't like the way in which I was doing them before. Elsewise, I've begun setting up the login functionality here in Android- the first step today will be understanding and getting used to using async task, as this is a key aspect in mobile development(all these asynchronous methods make me cry).">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../WebAPITutorial2/app/app.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../WebAPITutorial2/.idea/libraries/support_v4_19_1_0.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/config/R$attr.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/config/R$dimen.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/config/R$drawable.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/config/R$id.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/config/R$layout.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/config/R$menu.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/config/R$string.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/config/R$style.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/config/R.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controller/HTTPClientClass.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/config/R.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Contacts.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Contacts.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Critical.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Critical.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/DetailsActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/DetailsActivity.class" />
+    <list default="true" id="2c67f11f-42ba-4275-a69a-20d0410e49d6" name="Default" comment="Commit 8: Reset the old http method back because... Yeah, the new versions didn't work right. I set up the Login function correctly- Login implements the singleton pattern successfully, the XML parses through and initialises its class variables correctly... It's all working- albeit it looks awful code wise. In particular, the XML method is looking awful.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/HomePage.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/HomePage.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/HttpRequest.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/HttpRequest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/LoginPage.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/LoginPage.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$menu.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$style.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/RssActivity$GetRSSDataTask.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/RssActivity$GetRSSDataTask.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/RssActivity.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/RssActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/util/RssReader.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/util/RssReader.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Settings.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Settings.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Ticket.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Ticket.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/ToDo.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/ToDo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Today.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Today.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Tomorrow.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Tomorrow.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/aidl/androidTest/debug/dependency.store" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/aidl/androidTest/debug/dependency.store" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/aidl/debug/dependency.store" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/aidl/debug/dependency.store" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug-androidTest.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/support-v4-18.0.0-16e1bbbd651e1a4254e6f7bd7dee2a96776c5897.jar" afterPath="$PROJECT_DIR$/app/build/intermediates/pre-dexed/debug/support-v4-18.0.0-16e1bbbd651e1a4254e6f7bd7dee2a96776c5897.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/androidTest/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/androidTest/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/HomePage.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/HomePage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/HttpRequest.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/HttpRequest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Login.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Login.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/LoginPage.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/LoginPage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/allnone/app/allnone/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/allnone/app/allnone/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/RssActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/RssActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/util/RssReader.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/util/RssReader.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_contacts.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_contacts.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_home_page.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_home_page.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home_page.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home_page.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_rss.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_rss.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_rss.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_rss.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_today.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_today.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_today.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_today.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeAssets/androidTest/debug/merger.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeAssets/androidTest/debug/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeAssets/debug/merger.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeAssets/debug/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeResources/androidTest/debug/merger.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeResources/androidTest/debug/merger.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeResources/debug/merger.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeResources/debug/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../BasicNetworking/.idea/libraries/support_v4_21_0_2.xml" afterPath="$PROJECT_DIR$/../BasicNetworking/.idea/libraries/support_v4_21_0_2.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../BasicNetworking/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../BasicNetworking/.idea/workspace.xml" />
     </list>
     <ignored path="All N One.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -153,19 +108,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="RssActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/RssActivity.java">
+      <file leaf-file-name="LoginPage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/LoginPage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="0" selection-start-line="14" selection-start-column="38" selection-end-line="15" selection-end-column="0" />
+              <caret line="106" column="24" selection-start-line="106" selection-start-column="24" selection-end-line="106" selection-end-column="24" />
               <folding>
-                <element signature="method#onCreate#0;class#RssActivity#0" expanded="false" />
-                <element signature="method#toLogin#0;class#RssActivity#0" expanded="false" />
-                <marker date="1439201390000" expanded="true" signature="1126:2156" placeholder="{...}" />
-                <marker date="1439201390000" expanded="false" signature="1209:1595" placeholder="{...}" />
-                <marker date="1439201390000" expanded="false" signature="1674:2150" placeholder="{...}" />
-                <marker date="1439201390000" expanded="false" signature="1845:1854" placeholder="&lt;~&gt;" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1033#1034#0" expanded="true" />
+                <element signature="e#1086#1087#0" expanded="true" />
+                <element signature="method#fn_FillParameters#0;class#LoginPage#0" expanded="false" />
+                <element signature="e#1552#1567#0" expanded="true" />
+                <element signature="e#5117#5118#0" expanded="true" />
+                <element signature="e#5161#5162#0" expanded="true" />
+                <element signature="e#5823#5824#0" expanded="true" />
+                <element signature="e#5877#5878#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomePage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/HomePage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+              <folding>
+                <element signature="method#onCreate#0;class#HomePage#0" expanded="false" />
+                <element signature="method#onCreateOptionsMenu#0;class#HomePage#0" expanded="false" />
+                <element signature="method#loadToDo#0;class#HomePage#0" expanded="false" />
+                <element signature="method#loadTicket#0;class#HomePage#0" expanded="false" />
+                <element signature="method#loadToday#0;class#HomePage#0" expanded="false" />
+                <element signature="method#loadTomorrow#0;class#HomePage#0" expanded="false" />
+                <element signature="method#loadContacts#0;class#HomePage#0" expanded="false" />
+                <element signature="method#loadCritical#0;class#HomePage#0" expanded="false" />
+                <element signature="method#loadCSettings#0;class#HomePage#0" expanded="false" />
+                <element signature="method#loadWixi#0;class#HomePage#0" expanded="false" />
+                <element signature="method#loadWebsite#0;class#HomePage#0" expanded="false" />
+                <element signature="method#loadSystem#0;class#HomePage#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Login.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Login.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -173,27 +164,12 @@
       <file leaf-file-name="HttpRequest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/HttpRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.2495089">
-              <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.33398822">
+              <caret line="50" column="19" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#fnStrSetResponseFromCall#0;class#HttpRequest#0" expanded="false" />
                 <element signature="method#fnStrSettingParameters#0;class#HttpRequest#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginPage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/LoginPage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#onCreate#0;class#LoginPage#0" expanded="false" />
-                <element signature="method#fn_FillParameters#0;class#LoginPage#0" expanded="false" />
-                <element signature="e#1126#1141#0" expanded="true" />
+                <element signature="method#fn_BXP_GetCall#0;class#HttpRequest#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -1628,7 +1604,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/ToDo.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/diary.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Appointment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Login.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controller/HTTPClientClass.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_today.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_home_page.xml" />
@@ -1637,8 +1612,10 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_contacts.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rss.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/RssActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Login.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/LoginPage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/HttpRequest.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/HomePage.java" />
       </list>
     </option>
   </component>
@@ -1656,9 +1633,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="5" />
-    <option name="y" value="23" />
-    <option name="width" value="1273" />
+    <option name="x" value="-19" />
+    <option name="y" value="29" />
+    <option name="width" value="1308" />
     <option name="height" value="915" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -1841,6 +1818,40 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="All N One" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="All N One" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2061,7 +2072,13 @@
       <option name="project" value="LOCAL" />
       <updated>1438958705894</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Commit 7: decided to redo HTTP methods, mainly because I didn't like the way in which I was doing them before. Elsewise, I've begun setting up the login functionality here in Android- the first step today will be understanding and getting used to using async task, as this is a key aspect in mobile development(all these asynchronous methods make me cry).">
+      <created>1439201540623</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1439201540623</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -2074,35 +2091,35 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="5" y="23" width="1273" height="915" extended-state="0" />
+    <frame x="-19" y="29" width="1308" height="915" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="105" y="123" width="1073" height="715" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279099" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290008" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52565706" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50438046" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3279099" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32883435" sideWeight="0.4642857" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279099" sideWeight="0.53571427" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3266583" sideWeight="0.53571427" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4643304" sideWeight="0.57512116" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279099" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24207962" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2575142" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25039494" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279099" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32916147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -2126,17 +2143,26 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="Commit 6: Fixed RSS framework. Buggy as hell due to a reference to another R.java file in the config, rather than the Allnone app's R.java. Overlap from poor implementation of copy-pasted code." />
     <MESSAGE value="Commit 7: decided to redo HTTP methods, mainly because I didn't like the way in which I was doing them before. Elsewise, I've begun setting up the login functionality here in Android- the first step today will be understanding and getting used to using async task, as this is a key aspect in mobile development(all these asynchronous methods make me cry)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit 7: decided to redo HTTP methods, mainly because I didn't like the way in which I was doing them before. Elsewise, I've begun setting up the login functionality here in Android- the first step today will be understanding and getting used to using async task, as this is a key aspect in mobile development(all these asynchronous methods make me cry)." />
+    <MESSAGE value="Commit 8: Reset the old http method back because... Yeah, the new versions didn't work right. I set up the Login function correctly- Login implements the singleton pattern successfully, the XML parses through and initialises its class variables correctly... It's all working- albeit it looks awful code wise. In particular, the XML method is looking awful." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit 8: Reset the old http method back because... Yeah, the new versions didn't work right. I set up the Login function correctly- Login implements the singleton pattern successfully, the XML parses through and initialises its class variables correctly... It's all working- albeit it looks awful code wise. In particular, the XML method is looking awful." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/HttpRequest.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="141" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="69" />
+      <option name="time" value="166" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2366,13 +2392,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/data/RssItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.038119443">
@@ -2520,14 +2539,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-17/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="878" column="19" selection-start-line="878" selection-start-column="19" selection-end-line="878" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/RssActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2535,35 +2546,77 @@
           <folding>
             <element signature="method#onCreate#0;class#RssActivity#0" expanded="false" />
             <element signature="method#toLogin#0;class#RssActivity#0" expanded="false" />
-            <marker date="1439201390000" expanded="true" signature="1126:2156" placeholder="{...}" />
-            <marker date="1439201390000" expanded="false" signature="1209:1595" placeholder="{...}" />
-            <marker date="1439201390000" expanded="false" signature="1674:2150" placeholder="{...}" />
-            <marker date="1439201390000" expanded="false" signature="1845:1854" placeholder="&lt;~&gt;" />
+            <marker date="1439201390000" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1439201390000" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1439201390000" expanded="false" signature="-1:-1" placeholder="{...}" />
+            <marker date="1439201390000" expanded="false" signature="-1:-1" placeholder="&lt;~&gt;" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-17/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="2639" column="19" selection-start-line="2639" selection-start-column="19" selection-end-line="2639" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/LoginPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="8" />
+          <caret line="106" column="24" selection-start-line="106" selection-start-column="24" selection-end-line="106" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#onCreate#0;class#LoginPage#0" expanded="false" />
+            <element signature="e#1033#1034#0" expanded="true" />
+            <element signature="e#1086#1087#0" expanded="true" />
             <element signature="method#fn_FillParameters#0;class#LoginPage#0" expanded="false" />
-            <element signature="e#1126#1141#0" expanded="true" />
+            <element signature="e#1552#1567#0" expanded="true" />
+            <element signature="e#5117#5118#0" expanded="true" />
+            <element signature="e#5161#5162#0" expanded="true" />
+            <element signature="e#5823#5824#0" expanded="true" />
+            <element signature="e#5877#5878#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/HomePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="8" />
+          <folding>
+            <element signature="method#onCreate#0;class#HomePage#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#HomePage#0" expanded="false" />
+            <element signature="method#loadToDo#0;class#HomePage#0" expanded="false" />
+            <element signature="method#loadTicket#0;class#HomePage#0" expanded="false" />
+            <element signature="method#loadToday#0;class#HomePage#0" expanded="false" />
+            <element signature="method#loadTomorrow#0;class#HomePage#0" expanded="false" />
+            <element signature="method#loadContacts#0;class#HomePage#0" expanded="false" />
+            <element signature="method#loadCritical#0;class#HomePage#0" expanded="false" />
+            <element signature="method#loadCSettings#0;class#HomePage#0" expanded="false" />
+            <element signature="method#loadWixi#0;class#HomePage#0" expanded="false" />
+            <element signature="method#loadWebsite#0;class#HomePage#0" expanded="false" />
+            <element signature="method#loadSystem#0;class#HomePage#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/HttpRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2495089">
-          <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33398822">
+          <caret line="50" column="19" selection-start-line="50" selection-start-column="19" selection-end-line="50" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#fnStrSetResponseFromCall#0;class#HttpRequest#0" expanded="false" />
             <element signature="method#fnStrSettingParameters#0;class#HttpRequest#0" expanded="false" />
+            <element signature="method#fn_BXP_GetCall#0;class#HttpRequest#0" expanded="false" />
           </folding>
         </state>
       </provider>
