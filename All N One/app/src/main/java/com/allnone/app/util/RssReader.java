@@ -15,16 +15,17 @@ public class RssReader {
         this.rssUrl = rssUrl;
     }
 
-    public List<RssItem> getItems() throws Exception {
-
+    public List<RssItem> getItems() {
+        RssParseHandler handler = new RssParseHandler();
+        try {
         SAXParserFactory factory = SAXParserFactory.newInstance();
 
         SAXParser saxParser = factory.newSAXParser();
 
-        RssParseHandler handler = new RssParseHandler();
-
         saxParser.parse(rssUrl, handler);
-
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return handler.getItems();
 
     }

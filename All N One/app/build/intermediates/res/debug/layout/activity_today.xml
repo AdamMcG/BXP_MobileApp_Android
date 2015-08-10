@@ -43,14 +43,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:background="#a0e524"/>
+            android:background="#a0e524" />
         <ListView
             android:layout_marginTop="10dp"
             android:id="@+id/today_AppointmentList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:background="#4b96e2"/>
+            android:background="#4b96e2" />
     </LinearLayout>
 
 </RelativeLayout>

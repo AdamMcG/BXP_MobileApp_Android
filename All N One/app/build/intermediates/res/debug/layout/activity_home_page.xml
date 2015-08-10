@@ -97,7 +97,8 @@
         android:onClick="loadWebsite"
         android:layout_below="@+id/button_contacts"
         android:layout_alignRight="@+id/button_contacts"
-        android:layout_alignEnd="@+id/button_contacts" />
+        android:layout_alignEnd="@+id/button_contacts"
+        android:textColor="#f3ff3e" />
 
 
 
@@ -110,7 +111,8 @@
         android:onClick="loadSystem"
         android:layout_below="@+id/button_web"
         android:layout_alignRight="@+id/button_web"
-        android:layout_alignEnd="@+id/button_web" />
+        android:layout_alignEnd="@+id/button_web"
+        android:textColor="#f3ff3e" />
 
 
 </LinearLayout>
@@ -164,7 +166,8 @@
         android:onClick="loadWixi"
         android:layout_below="@+id/button_critical"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textColor="#f3ff3e" />
 
     <Button
         android:layout_weight="0.5"
