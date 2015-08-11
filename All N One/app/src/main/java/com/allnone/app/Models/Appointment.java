@@ -1,6 +1,8 @@
 package com.allnone.app.Models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created by testing on 06/08/15.
@@ -55,6 +57,9 @@ public class Appointment {
     }
 
     public String toString() {
-        return getIntAppointmentid() + ": " + getDteAppointmentStart().toString() + "\n" + getStrAppointmentTitle();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd 'T' hh:mm:ss");
+        TimeZone time = TimeZone.getTimeZone("UTC");
+        dateFormat.setTimeZone(time);
+        return String.format("%s:\n%d %s", dateFormat.format(getDteAppointmentStart()), getIntAppointmentid(), getStrAppointmentTitle());
     }
 }

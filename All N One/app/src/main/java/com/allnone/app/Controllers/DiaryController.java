@@ -16,7 +16,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import static org.xmlpull.v1.XmlPullParser.END_TAG;
 import static org.xmlpull.v1.XmlPullParser.START_TAG;
@@ -61,7 +63,9 @@ public class DiaryController {
 
     public void fn_parseDiaryContents(String strXmlString) throws ParseException {
         try {
-
+            TimeZone time = TimeZone.getTimeZone("UTC");
+            dateFormat.setTimeZone(time);
+            GregorianCalendar calendar = new GregorianCalendar(time);
             String text = "";
             XmlPullParserFactory xmlParsFact = XmlPullParserFactory.newInstance();
             xmlParsFact.setNamespaceAware(true);
