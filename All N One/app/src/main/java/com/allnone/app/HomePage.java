@@ -15,6 +15,9 @@ import com.allnone.app.allnone.R;
 
 
 public class HomePage extends Activity {
+    private diary diary;
+    private String diaryFunction;
+    private Intent diaryIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,19 +54,15 @@ public class HomePage extends Activity {
     }
 
     public void loadToday(View view) {
-        Intent intent = new Intent(this, Today.class);
-        diary testing = new diary();
-        intent.putExtra("Today's Diary", testing);
-        startActivity(intent);
+        diaryIntent = new Intent(this, Today.class);
+        startActivity(diaryIntent);
     }
 
     public void loadTomorrow(View view) {
-        Intent intent = new Intent(this, Tomorrow.class);
-        diary tomorrow = new diary();
-        intent.putExtra("Tomorrow Diary", tomorrow);
-        startActivity(intent);
-    }
+        diaryIntent = new Intent(this, Tomorrow.class);
+        startActivity(diaryIntent);
 
+    }
     public void loadContacts(View view) {
         Intent intent = new Intent(this, Contacts.class);
         startActivity(intent);
@@ -96,4 +95,6 @@ public class HomePage extends Activity {
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
+
+
 }

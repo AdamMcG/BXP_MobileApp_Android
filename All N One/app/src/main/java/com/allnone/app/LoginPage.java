@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import com.allnone.app.Controllers.HttpRequest;
 import com.allnone.app.Models.Login;
 import com.allnone.app.allnone.R;
 
@@ -24,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.xmlpull.v1.XmlPullParser.END_TAG;
-import static org.xmlpull.v1.XmlPullParser.START_TAG;
 import static org.xmlpull.v1.XmlPullParser.TEXT;
 
 
@@ -101,10 +101,7 @@ public class LoginPage extends Activity {
             parser.nextTag();
             int eventType = parser.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
-                String tagName = parser.getName();
                 switch (eventType) {
-                    case START_TAG:
-                        if (tagName.equals("data")) ;
                     case TEXT:
                         text = parser.getText();
                         break;
@@ -143,6 +140,8 @@ public class LoginPage extends Activity {
         @Override
         protected String doInBackground(String... params) {
             String strRestFunctionURL = "http://ww3.allnone.ie/client/" + getStrSystem() + "/cti/userAPP_main.asp";
+            myLogin = Login.getInstance();
+            myLogin.setStrUrlUsed(strRestFunctionURL);
             myClient.fnHttpPost(strRestFunctionURL, myClient.fnStrSettingParameters(fn_FillParameters()));
             String strLoginContent = myClient.fnStrGetResponseFromCall();
             try {
