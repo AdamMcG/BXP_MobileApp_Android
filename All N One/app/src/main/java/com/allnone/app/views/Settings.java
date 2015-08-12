@@ -28,14 +28,12 @@ import static org.xmlpull.v1.XmlPullParser.TEXT;
 
 
 public class Settings extends Activity {
-    private HttpRequest myHttpClient;
-    private Login myLogin;
     private Setting mySetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        settingsfunctionality myFunctionality = new settingsfunctionality();
+        settingsFunctionality myFunctionality = new settingsFunctionality();
         myFunctionality.execute();
     }
 
@@ -53,7 +51,54 @@ public class Settings extends Activity {
 
     }
 
-    private class settingsfunctionality extends AsyncTask<String, String, String> {
+    public XmlPullParser fn_createSettingsParser(String strXmlSettings) {
+        XmlPullParser parser = null;
+        try {
+            XmlPullParserFactory xmlParsFact = XmlPullParserFactory.newInstance();
+            xmlParsFact.setNamespaceAware(true);
+            parser = xmlParsFact.newPullParser();
+            parser.setInput(new StringReader(strXmlSettings));
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
+        return parser;
+    }
+
+    public void fn_ParseSettings(XmlPullParser parser) throws XmlPullParserException, IOException {
+        String text = "";
+
+        try {
+            parser.nextTag();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        int eventType = parser.getEventType();
+        while (parser.getEventType() != XmlPullParser.END_DOCUMENT) {
+            switch (eventType) {
+                case START_TAG:
+                    if (parser.getName().equals("data"))
+                        mySetting = new Setting();
+                case TEXT:
+                    text = parser.getText();
+                    break;
+                case END_TAG:
+                    if (parser.getName().equals("intError_Id")) {
+                        int intError = Integer.parseInt(text);
+                        mySetting.setIntErrorId(intError);
+                    } else if (parser.getName().equals("strError"))
+                        mySetting.setStrError(text);
+                    else if (parser.getName().equals("data")) {
+                        System.out.println("Data goes here!");
+                    }
+                    break;
+                default:
+                    break;
+            }
+            eventType = parser.next();
+        }
+    }
+
+    private class settingsFunctionality extends AsyncTask<String, String, String> {
         protected void onPreExecute() {
             super.onPreExecute();
         }
@@ -61,7 +106,7 @@ public class Settings extends Activity {
         @Override
         protected String doInBackground(String... params) {
             try {
-                myLogin = Login.getInstance();
+                Login myLogin = Login.getInstance();
                 List<NameValuePair> parameters = new ArrayList<NameValuePair>();
                 //region Parameters
                 BasicNameValuePair parameter = new BasicNameValuePair("strFunction", "settings");
@@ -74,11 +119,11 @@ public class Settings extends Activity {
                 parameter = new BasicNameValuePair("strClient_SessionField", myLogin.getStrClient_SessionField());
                 parameters.add(parameter);
                 //endregion
-                myHttpClient = new HttpRequest();
+                HttpRequest myHttpClient = new HttpRequest();
                 String strParams = myHttpClient.fnStrSettingParameters(parameters);
                 myHttpClient.fn_BxpApi_PostCall(myLogin.getStrUrlUsed(), strParams);
                 try {
-                    fn_ParseSettings(myHttpClient.fnStrGetResponseFromCall());
+                    fn_ParseSettings(fn_createSettingsParser(myHttpClient.fnStrGetResponseFromCall()));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -96,47 +141,9 @@ public class Settings extends Activity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            mySetting.getIntErrorId();
-            int a = 3 * 3 * 45444544;
             setContentView(R.layout.activity_settings);
 
         }
-
-        public void fn_ParseSettings(String strXmlSettings) throws XmlPullParserException, IOException {
-            String text = "";
-            XmlPullParserFactory xmlParsFact = XmlPullParserFactory.newInstance();
-            xmlParsFact.setNamespaceAware(true);
-            XmlPullParser parser = xmlParsFact.newPullParser();
-            parser.setInput(new StringReader(strXmlSettings));
-            try {
-                parser.nextTag();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            int eventType = parser.getEventType();
-            while (parser.getEventType() != XmlPullParser.END_DOCUMENT) {
-                switch (eventType) {
-                    case START_TAG:
-                        if (parser.getName().equals("data"))
-                            mySetting = new Setting();
-                    case TEXT:
-                        text = parser.getText();
-                        break;
-                    case END_TAG:
-                        if (parser.getName().equals("intError_Id")) {
-                            int intError = Integer.parseInt(text);
-                            mySetting.setIntErrorId(intError);
-                        } else if (parser.getName().equals("strError"))
-                            mySetting.setStrError(text);
-                        else if (parser.getName().equals("data")) {
-                            int a = 2;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-                eventType = parser.next();
-            }
-        }
     }
+
 }

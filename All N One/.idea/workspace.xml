@@ -56,61 +56,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c67f11f-42ba-4275-a69a-20d0410e49d6" name="Default" comment="Commit 12: Added NetworkConnection check on app opening, error handling on login(Opens up a dialog which tells you the strError). Otherwise, I've decided to try only create shorter methods. any methods longer than 60 lines will be cut up, if possible. Naming will also be addressed. Proper naming/good, informative names should be used.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Settings.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/headerforlist.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Contacts.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Critical.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/DetailsActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/HomePage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/LoginPage.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/RssActivity$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/RssActivity$GetRSSDataTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/RssActivity.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Settings.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/StoreLogin.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Ticket.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/ToDo$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/ToDo.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Today.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/Tomorrow.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Settings.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/StoreLogin.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Contacts.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Contacts.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Critical.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Critical.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/DetailsActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/DetailsActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/HomePage.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/HomePage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/LoginPage.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/LoginPage.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/RssActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/RssActivity.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Ticket.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Ticket.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/ToDo.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/ToDo.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Today.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Today.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Tomorrow.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Tomorrow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/listeners/ListListener.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/listeners/ListListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$id.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$layout.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$menu.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$string.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$style.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R.class" afterPath="$PROJECT_DIR$/app/build/intermediates/classes/debug/com/allnone/app/allnone/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Appointment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Appointment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/DiaryController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/DiaryController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/HttpRequest.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/HttpRequest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/listeners/ListListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/listeners/ListListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/allnone/app/allnone/R.java" afterPath="$PROJECT_DIR$/app/build/generated/source/r/debug/com/allnone/app/allnone/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/menu/menu_details.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/debug/menu/menu_details.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_details.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_details.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeResources/debug/merger.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeResources/debug/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Settings.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Settings.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="All N One.iws" />
@@ -154,15 +104,22 @@
       <file leaf-file-name="Settings.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Settings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0197629">
-              <caret line="131" column="15" selection-start-line="131" selection-start-column="15" selection-end-line="131" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.50395256">
+              <caret line="53" column="82" selection-start-line="53" selection-start-column="82" selection-end-line="53" selection-end-column="82" />
               <folding>
                 <element signature="method#onCreate#0;class#Settings#0" expanded="false" />
                 <element signature="method#onCreateOptionsMenu#0;class#Settings#0" expanded="false" />
-                <element signature="method#doInBackground#0;class#settingsfunctionality#0;class#Settings#0" expanded="false" />
-                <element signature="e#1914#1929#0" expanded="true" />
-                <element signature="e#1949#1968#0" expanded="false" />
-                <element signature="method#onPostExecute#0;class#settingsfunctionality#0;class#Settings#0" expanded="false" />
+                <element signature="method#onOptionsItemSelected#0;class#Settings#0" expanded="false" />
+                <element signature="class#settingsFunctionality#0;class#Settings#0" expanded="false" />
+                <element signature="e#1597#1598#0" expanded="true" />
+                <element signature="e#1641#1642#0" expanded="true" />
+                <element signature="method#doInBackground#0;class#settingsFunctionality#0;class#Settings#0" expanded="false" />
+                <element signature="e#1855#1870#0" expanded="true" />
+                <element signature="e#1890#1909#0" expanded="false" />
+                <element signature="e#3231#3232#0" expanded="true" />
+                <element signature="e#3285#3286#0" expanded="true" />
+                <element signature="method#fn_createSettingsParser#0;class#Settings#0" expanded="false" />
+                <element signature="method#fn_ParseSettings#0;class#Settings#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -2246,7 +2203,13 @@
       <option name="project" value="LOCAL" />
       <updated>1439308418700</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Commit 12: Added NetworkConnection check on app opening, error handling on login(Opens up a dialog which tells you the strError). Otherwise, I've decided to try only create shorter methods. any methods longer than 60 lines will be cut up, if possible. Naming will also be addressed. Proper naming/good, informative names should be used.">
+      <created>1439380522326</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1439380522326</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -2866,15 +2829,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0197629">
-          <caret line="131" column="15" selection-start-line="131" selection-start-column="15" selection-end-line="131" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.50395256">
+          <caret line="53" column="82" selection-start-line="53" selection-start-column="82" selection-end-line="53" selection-end-column="82" />
           <folding>
             <element signature="method#onCreate#0;class#Settings#0" expanded="false" />
             <element signature="method#onCreateOptionsMenu#0;class#Settings#0" expanded="false" />
-            <element signature="method#doInBackground#0;class#settingsfunctionality#0;class#Settings#0" expanded="false" />
-            <element signature="e#1914#1929#0" expanded="true" />
-            <element signature="e#1949#1968#0" expanded="false" />
-            <element signature="method#onPostExecute#0;class#settingsfunctionality#0;class#Settings#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#Settings#0" expanded="false" />
+            <element signature="class#settingsFunctionality#0;class#Settings#0" expanded="false" />
+            <element signature="e#1597#1598#0" expanded="true" />
+            <element signature="e#1641#1642#0" expanded="true" />
+            <element signature="method#doInBackground#0;class#settingsFunctionality#0;class#Settings#0" expanded="false" />
+            <element signature="e#1855#1870#0" expanded="true" />
+            <element signature="e#1890#1909#0" expanded="false" />
+            <element signature="e#3231#3232#0" expanded="true" />
+            <element signature="e#3285#3286#0" expanded="true" />
+            <element signature="method#fn_createSettingsParser#0;class#Settings#0" expanded="false" />
+            <element signature="method#fn_ParseSettings#0;class#Settings#0" expanded="false" />
           </folding>
         </state>
       </provider>
