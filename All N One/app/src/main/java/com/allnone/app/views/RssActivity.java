@@ -1,12 +1,18 @@
-package com.allnone.app;
+package com.allnone.app.views;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.allnone.app.allnone.R;
@@ -25,12 +31,52 @@ public class RssActivity extends Activity {
         setContentView(R.layout.activity_rss);
 
         local = this;
+        GetRSSDataTask task;
+        boolean check = fn_checkConnectivity();
+        if (!check) {
+            Button login = (Button) findViewById(R.id.button_login1);
+            login.setEnabled(false);
+            Context context = local;
+            AlertDialog.Builder noNetwork = new AlertDialog.Builder(context);
+            noNetwork.setMessage("No Network Connection");
+            noNetwork.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-        GetRSSDataTask task = new GetRSSDataTask();
+                }
+            });
+            noNetwork.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
-        task.execute("http://ww3.allnone.ie/client/client_demo/message/atomfeed.asp");
+                }
+            });
+            noNetwork.create();
+            noNetwork.show();
+        }
 
-        Log.d("All N One", Thread.currentThread().getName());
+        try {
+            task = new GetRSSDataTask();
+            task.execute("http://ww3.allnone.ie/client/client_demo/message/atomfeed.asp");
+            Log.d("All N One", Thread.currentThread().getName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public boolean fn_checkConnectivity() {
+        boolean connected = true;
+        try {
+            Context context = local;
+            ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo activeNetwork = connMgr.getActiveNetworkInfo();
+            connected = (activeNetwork != null) && activeNetwork.isConnected();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return connected;
+
     }
 
     public void toLogin(View view) {

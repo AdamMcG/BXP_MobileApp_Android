@@ -56,10 +56,14 @@ public class Appointment {
         this.strUrl = strUrl;
     }
 
-    public String toString() {
+    public String returnDateStartString() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd 'T' hh:mm:ss");
         TimeZone time = TimeZone.getTimeZone("UTC");
         dateFormat.setTimeZone(time);
-        return String.format("%s:\n%d %s", dateFormat.format(getDteAppointmentStart()), getIntAppointmentid(), getStrAppointmentTitle());
+        return dateFormat.format(getDteAppointmentStart());
+    }
+
+    public String toString() {
+        return String.format("%d: %s", getIntAppointmentid(), getStrAppointmentTitle());
     }
 }

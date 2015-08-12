@@ -16,7 +16,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -40,7 +39,7 @@ public class DiaryController {
         return myDiary;
     }
 
-    public void fn_diaryPostCall(String diaryFunction) throws ParseException {
+    public void fn_diaryRestCallPost(String diaryFunction) throws ParseException {
         myHttpClient = new HttpRequest();
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         //region PostParameters
@@ -57,20 +56,29 @@ public class DiaryController {
         parameter = new BasicNameValuePair("intDiary", "3");
         parameters.add(parameter);
         //endregion
-        myHttpClient.fnHttpPost(myLogin.getStrUrlUsed(), myHttpClient.fnStrSettingParameters(parameters));
-        fn_parseDiaryContents(myHttpClient.fnStrGetResponseFromCall());
+        myHttpClient.fn_BxpApi_PostCall(myLogin.getStrUrlUsed(), myHttpClient.fnStrSettingParameters(parameters));
+
+        fn_parseDiaryXMLContents(fn_createParser(myHttpClient.fnStrGetResponseFromCall()));
     }
 
-    public void fn_parseDiaryContents(String strXmlString) throws ParseException {
+    private XmlPullParser fn_createParser(String strXmlString) {
+        XmlPullParser parser = null;
+        try {
+            XmlPullParserFactory xmlParsFact = XmlPullParserFactory.newInstance();
+            xmlParsFact.setNamespaceAware(true);
+            parser = xmlParsFact.newPullParser();
+            parser.setInput(new StringReader(strXmlString));
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
+        return parser;
+    }
+
+    public void fn_parseDiaryXMLContents(XmlPullParser parser) throws ParseException {
         try {
             TimeZone time = TimeZone.getTimeZone("UTC");
             dateFormat.setTimeZone(time);
-            GregorianCalendar calendar = new GregorianCalendar(time);
             String text = "";
-            XmlPullParserFactory xmlParsFact = XmlPullParserFactory.newInstance();
-            xmlParsFact.setNamespaceAware(true);
-            XmlPullParser parser = xmlParsFact.newPullParser();
-            parser.setInput(new StringReader(strXmlString));
             parser.nextTag();
             int eventType = parser.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
@@ -91,12 +99,8 @@ public class DiaryController {
                         } else if (parser.getName().equals("strError")) {
                             myDiary.setStrError(text);
                         } else if (parser.getName().equals("dtePeriodStart")) {
-                            try {
-                                Date dateStart = dateFormat.parse(text);
-                                myDiary.setDtePeriodStart(dateStart);
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
+                            Date dateStart = dateFormat.parse(text);
+                            myDiary.setDtePeriodStart(dateStart);
                         } else if (parser.getName().equals("dtePeriodEnd")) {
                             Date dateEnd = dateFormat.parse(text);
                             myDiary.setDtePeriodEnd(dateEnd);

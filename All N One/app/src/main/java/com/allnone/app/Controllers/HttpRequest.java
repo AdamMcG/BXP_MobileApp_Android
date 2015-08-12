@@ -43,7 +43,7 @@ public class HttpRequest {
         return result.toString();
     }
 
-    public void fnHttpPost(String function, String params) {
+    public void fn_BxpApi_PostCall(String function, String params) {
         HttpURLConnection myHttpclient = null;
         try {
             URL url = new URL(function);
@@ -65,6 +65,7 @@ public class HttpRequest {
                 InputStreamReader ioStreamReader = new InputStreamReader(ioResponseStream);
                 BufferedReader bIOReader = new BufferedReader(ioStreamReader);
                 String strReaderLine;
+                strResponseFromCall.setLength(0);
                 while ((strReaderLine = bIOReader.readLine()) != null) {
                     strResponseFromCall.append(strReaderLine);
 

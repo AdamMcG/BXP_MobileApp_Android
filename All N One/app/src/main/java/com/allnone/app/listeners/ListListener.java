@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
-import com.allnone.app.DetailsActivity;
 import com.allnone.app.data.RssItem;
+import com.allnone.app.views.DetailsActivity;
 
 import java.util.List;
 

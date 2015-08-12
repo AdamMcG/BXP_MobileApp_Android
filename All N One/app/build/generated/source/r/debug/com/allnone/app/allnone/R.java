@@ -27,7 +27,7 @@ public final class R {
         public static final int TFsystem=0x7f080014;
         public static final int TFusername=0x7f080015;
         public static final int TVusername=0x7f08000a;
-        public static final int action_settings=0x7f080033;
+        public static final int action_settings=0x7f080034;
         public static final int button=0x7f08001e;
         public static final int button_add=0x7f080029;
         public static final int button_contacts=0x7f08000d;
@@ -55,9 +55,10 @@ public final class R {
         public static final int editText_ticketdes=0x7f080026;
         public static final int editText_ticketsub=0x7f080025;
         public static final int editText_userdefault=0x7f080020;
+        public static final int headerView=0x7f080032;
         public static final int imageView=0x7f080019;
         public static final int listMView=0x7f08001a;
-        public static final int menu_settings=0x7f080032;
+        public static final int menu_settings=0x7f080033;
         public static final int rssChannelListView=0x7f08001c;
         public static final int tab_sports=0x7f08001d;
         public static final int textView10=0x7f080008;
@@ -88,6 +89,7 @@ public final class R {
         public static final int activity_to_do=0x7f03000a;
         public static final int activity_today=0x7f03000b;
         public static final int activity_tomorrow=0x7f03000c;
+        public static final int headerforlist=0x7f03000d;
     }
     public static final class menu {
         public static final int activity_rss=0x7f070000;
