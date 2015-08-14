@@ -46,6 +46,13 @@ public class LoginPage extends Activity {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        strStaticSystem = strSystem.getText().toString();
+        strStaticUsername = a.getText().toString();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         local = this;
@@ -75,13 +82,11 @@ public class LoginPage extends Activity {
     }
 
     public void onButtonClick(View v) {
-        if (strSystem.getText() != null && v.getId() == R.id.Alogin) {
-            strStaticSystem = strSystem.getText().toString();
-            strStaticUsername = a.getText().toString();
+        if (v.getId() == R.id.Alogin) {
             i = new Intent(this, HomePage.class);
             LoginFunctionality logIntoBxp = new LoginFunctionality();
             logIntoBxp.execute();
-
+            strPassword.setText(null);
         }
     }
 
