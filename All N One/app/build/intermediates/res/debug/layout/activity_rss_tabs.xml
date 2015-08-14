@@ -32,7 +32,8 @@
                 <LinearLayout
                     android:id="@+id/tab_sports"
                     android:layout_width="match_parent"
-                    android:layout_height="418dp" >
+                    android:layout_height="418dp"
+                    android:orientation="horizontal">
                 </LinearLayout>
             </FrameLayout>
 
@@ -40,13 +41,13 @@
     </TabHost>
 
     <Button
+        android:id="@+id/button"
         android:layout_width="110dp"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:onClick="toLogin"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:text="Login" />
 
 </RelativeLayout><!-- From: file:/Users/testing/Desktop/AndroidStudioProjects/All%20N%20One/app/src/main/res/layout/activity_rss_tabs.xml -->

@@ -24,7 +24,7 @@ public class Appointment {
         this.intAppointmentid = intAppointmentid;
     }
 
-    public String getStrAppointmentTitle() {
+    protected String getStrAppointmentTitle() {
         return strAppointmentTitle;
     }
 
@@ -39,17 +39,8 @@ public class Appointment {
     public void setDteAppointmentStart(Date dteAppointmentStart) {
         this.dteAppointmentStart = dteAppointmentStart;
     }
-
-    public Date getGetDteAppointmentEnd() {
-        return getDteAppointmentEnd;
-    }
-
     public void setGetDteAppointmentEnd(Date getDteAppointmentEnd) {
         this.getDteAppointmentEnd = getDteAppointmentEnd;
-    }
-
-    public String getStrUrl() {
-        return strUrl;
     }
 
     public void setStrUrl(String strUrl) {
@@ -57,7 +48,8 @@ public class Appointment {
     }
 
     public String returnDateStartString() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd 'T' hh:mm:ss");
+        SimpleDateFormat dateFormat;
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd 'T' hh:mm:ss");
         TimeZone time = TimeZone.getTimeZone("UTC");
         dateFormat.setTimeZone(time);
         return dateFormat.format(getDteAppointmentStart());

@@ -40,7 +40,7 @@ public class LoginPage extends Activity {
     private LoginPage local;
 
     public String getStrSystem() {
-        return strSystem.getText().toString();
+        return "client_" + strSystem.getText().toString();
     }
 
     @Override
@@ -49,6 +49,7 @@ public class LoginPage extends Activity {
         local = this;
         setContentView(R.layout.activity_login_page);
         strSystem = (EditText) findViewById(R.id.TFsystem);
+
         a = (EditText) findViewById(R.id.TFusername);
         strPassword = (EditText) findViewById(R.id.TFpassword);
     }
@@ -58,7 +59,7 @@ public class LoginPage extends Activity {
         BasicNameValuePair parameter;
         parameter = new BasicNameValuePair("strFunction", "login");
         kvParameters.add(parameter);
-        parameter = new BasicNameValuePair("strSystem", strSystem.getText().toString());
+        parameter = new BasicNameValuePair("strSystem", getStrSystem());
         kvParameters.add(parameter);
         parameter = new BasicNameValuePair("strClient_Username", a.getText().toString());
         kvParameters.add(parameter);
@@ -95,7 +96,7 @@ public class LoginPage extends Activity {
         try {
             myLogin = Login.getInstance();
             myLogin.setStrUserName(a.getText().toString());
-            myLogin.setStrSystemUsed(strSystem.getText().toString());
+            myLogin.setStrSystemUsed(getStrSystem());
             XmlPullParserFactory xmlParsFact = XmlPullParserFactory.newInstance();
             xmlParsFact.setNamespaceAware(true);
             parser = xmlParsFact.newPullParser();
@@ -112,32 +113,41 @@ public class LoginPage extends Activity {
             parser.nextTag();
             int eventType = parser.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
-                switch (eventType) {
-                    case TEXT:
-                        text = parser.getText();
-                        break;
-                    case END_TAG:
-                        if (parser.getName().equals("strFunction")) {
-                            myLogin.setStrFunction(text);
-                        } else if (parser.getName().equals("intErrorId")) {
-                            int errorId = Integer.parseInt(text);
-                            myLogin.setIntError(errorId);
-                        } else if (parser.getName().equals("strError")) {
-                            myLogin.setStrError(text);
-                        } else if (parser.getName().equals("intClient_Id")) {
-                            int clientId = Integer.parseInt(text);
-                            myLogin.setIntClientid(clientId);
-                        } else if (parser.getName().equals("strClient_SessionField")) {
-                            myLogin.setStrClient_SessionField(text);
-                        }
-                        break;
-                    default:
-                        break;
-                }
+                text = ReadingThroughXML(parser, text, eventType);
                 eventType = parser.next();
             }
         } catch (XmlPullParserException e) {
             e.printStackTrace();
+        }
+    }
+
+    private String ReadingThroughXML(XmlPullParser parser, String text, int eventType) {
+        switch (eventType) {
+            case TEXT:
+                text = parser.getText();
+                break;
+            case END_TAG:
+                assigningToLoginObject(parser, text);
+                break;
+            default:
+                break;
+        }
+        return text;
+    }
+
+    private void assigningToLoginObject(XmlPullParser parser, String text) {
+        if (parser.getName().equals("strFunction")) {
+            myLogin.setStrFunction(text);
+        } else if (parser.getName().equals("intErrorId")) {
+            int errorId = Integer.parseInt(text);
+            myLogin.setIntError(errorId);
+        } else if (parser.getName().equals("strError")) {
+            myLogin.setStrError(text);
+        } else if (parser.getName().equals("intClient_Id")) {
+            int clientId = Integer.parseInt(text);
+            myLogin.setIntClientid(clientId);
+        } else if (parser.getName().equals("strClient_SessionField")) {
+            myLogin.setStrClient_SessionField(text);
         }
     }
 
@@ -174,7 +184,6 @@ public class LoginPage extends Activity {
             myLogin = Login.getInstance();
             myLogin.setStrUrlUsed(strRestFunctionURL);
             myClient.fn_BxpApi_PostCall(strRestFunctionURL, myClient.fnStrSettingParameters(fn_FillParameters()));
-            String strLoginContent = myClient.fnStrGetResponseFromCall();
             try {
                 fn_ParsingThroughXMLDocument(fn_createLoginParser(myClient.fnStrGetResponseFromCall()));
 

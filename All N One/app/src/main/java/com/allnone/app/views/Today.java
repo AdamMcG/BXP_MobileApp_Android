@@ -1,7 +1,9 @@
 package com.allnone.app.views;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,10 +26,11 @@ public class Today extends Activity {
     ListView todayAppointment;
     ListView todayListee;
     diary todayDiary;
-
+    Context local;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        local = this;
         diaryFunctionality dFunct = new diaryFunctionality();
         dFunct.execute();
 
@@ -82,6 +85,7 @@ public class Today extends Activity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             setContentView(R.layout.activity_today);
+
             todayAppointment = (ListView) findViewById(R.id.today_AppointmentList);
             todayListee = (ListView) findViewById(R.id.today_listeeList);
             Context local = getApplicationContext();
@@ -102,6 +106,49 @@ public class Today extends Activity {
             text.setText("Appointment List");
             todayAppointment.addHeaderView(headerView);
             todayAppointment.setAdapter(myAdapter);
+
+            fn_createSuccessDialog("Successful retrieval!");
+
+        }
+
+        public void fn_createSuccessDialog(String successDialog) {
+            Context context = local;
+            AlertDialog.Builder noNetwork = new AlertDialog.Builder(context);
+            noNetwork.setMessage(successDialog);
+            noNetwork.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            noNetwork.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            noNetwork.create();
+            noNetwork.show();
+        }
+
+        public void fn_createErrorDialog() {
+            Context context = local;
+            AlertDialog.Builder noNetwork = new AlertDialog.Builder(context);
+            noNetwork.setMessage(todayDiary.getStrError());
+            noNetwork.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            noNetwork.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            noNetwork.create();
+            noNetwork.show();
         }
     }
 }

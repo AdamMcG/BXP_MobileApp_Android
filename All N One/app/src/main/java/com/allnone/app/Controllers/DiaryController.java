@@ -30,6 +30,7 @@ import static org.xmlpull.v1.XmlPullParser.TEXT;
  */
 public class DiaryController {
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+    private final SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
     Login myLogin = Login.getInstance();
     private HttpRequest myHttpClient;
     private diary myDiary;
@@ -74,6 +75,7 @@ public class DiaryController {
         return parser;
     }
 
+    //region Parsing Methods
     public void fn_parseDiaryXMLContents(XmlPullParser parser) throws ParseException {
         try {
             TimeZone time = TimeZone.getTimeZone("UTC");
@@ -83,45 +85,7 @@ public class DiaryController {
             int eventType = parser.getEventType();
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 String tagName = parser.getName();
-                switch (eventType) {
-                    case START_TAG:
-                        if (tagName.equals("data")) myDiary = new diary();
-                        else if (tagName.equals("item")) myAppointment = new Appointment();
-                    case TEXT:
-                        text = parser.getText();
-                        break;
-                    case END_TAG:
-                        if (parser.getName().equals("strFunction")) {
-                            myDiary.setStrFunction(text);
-                        } else if (parser.getName().equals("intErrorId")) {
-                            int errorId = Integer.parseInt(text);
-                            myDiary.setIntErrorId(errorId);
-                        } else if (parser.getName().equals("strError")) {
-                            myDiary.setStrError(text);
-                        } else if (parser.getName().equals("dtePeriodStart")) {
-                            Date dateStart = dateFormat.parse(text);
-                            myDiary.setDtePeriodStart(dateStart);
-                        } else if (parser.getName().equals("dtePeriodEnd")) {
-                            Date dateEnd = dateFormat.parse(text);
-                            myDiary.setDtePeriodEnd(dateEnd);
-                        } else if (parser.getName().equals("id")) {
-                            int intId = Integer.parseInt(text);
-                            myAppointment.setIntAppointmentid(intId);
-                        } else if (parser.getName().equals("title")) {
-                            myAppointment.setStrAppointmentTitle(text);
-                        } else if (parser.getName().equals("start")) {
-                            Date appointmentDateStart = dateFormat.parse(text);
-                            myAppointment.setDteAppointmentStart(appointmentDateStart);
-                        } else if (parser.getName().equals("end")) {
-                            Date appointmentDateEnd = dateFormat.parse(text);
-                            myAppointment.setGetDteAppointmentEnd(appointmentDateEnd);
-                        } else if (parser.getName().equals("Url")) myAppointment.setStrUrl(text);
-                        else if (parser.getName().equals("item"))
-                            myDiary.colAppointment.add(myAppointment);
-                        break;
-                    default:
-                        break;
-                }
+                text = ParsingDiaryData(parser, text, eventType, tagName);
                 eventType = parser.next();
             }
         } catch (XmlPullParserException e) {
@@ -130,5 +94,63 @@ public class DiaryController {
             e.printStackTrace();
         }
     }
+
+    private String ParsingDiaryData(XmlPullParser parser, String text, int eventType, String tagName) throws ParseException {
+        switch (eventType) {
+            case START_TAG:
+                if (tagName.equals("data")) myDiary = new diary();
+                else if (tagName.equals("item")) myAppointment = new Appointment();
+            case TEXT:
+                text = parser.getText();
+                break;
+            case END_TAG:
+                decidingText(parser, text);
+                break;
+            default:
+                break;
+        }
+        return text;
+    }
+
+    private void decidingText(XmlPullParser parser, String text) throws ParseException {
+        if (parser.getName().equals("strFunction")) {
+            myDiary.setStrFunction(text);
+        } else if (parser.getName().equals("intErrorId")) {
+            int errorId = Integer.parseInt(text);
+            myDiary.setIntErrorId(errorId);
+        } else if (parser.getName().equals("strError")) {
+            myDiary.setStrError(text);
+        } else if (parser.getName().equals("dtePeriodStart")) {
+            Date dateStart = dateFormat.parse(text);
+            myDiary.setDtePeriodStart(dateStart);
+        } else if (parser.getName().equals("dtePeriodEnd")) {
+            Date dateEnd = dateFormat.parse(text);
+            myDiary.setDtePeriodEnd(dateEnd);
+        } else if (parser.getName().equals("id")) {
+            int intId = Integer.parseInt(text);
+            myAppointment.setIntAppointmentid(intId);
+        } else if (parser.getName().equals("title")) {
+            myAppointment.setStrAppointmentTitle(text);
+        } else if (parser.getName().equals("start")) {
+            Date appointmentDateStart = getDate(text);
+            myAppointment.setDteAppointmentStart(appointmentDateStart);
+        } else if (parser.getName().equals("end")) {
+            Date appointmentDateEnd = getDate(text);
+            myAppointment.setGetDteAppointmentEnd(appointmentDateEnd);
+        } else if (parser.getName().equals("Url")) myAppointment.setStrUrl(text);
+        else if (parser.getName().equals("item"))
+            myDiary.colAppointment.add(myAppointment);
+    }
+
+    private Date getDate(String text) throws ParseException {
+        Date appointmentDateStart;
+        if (text.contains("T")) {
+            appointmentDateStart = dateFormat.parse(text);
+        } else {
+            appointmentDateStart = dateFormat2.parse(text);
+        }
+        return appointmentDateStart;
+    }
+    //endregion
 
 }
