@@ -46,19 +46,7 @@ public class HttpRequest {
     public void fn_BxpApi_PostCall(String function, String params) {
         HttpURLConnection myHttpclient = null;
         try {
-            URL url = new URL(function);
-            ByteBuffer databuffer = Charset.forName("UTF-8").encode(params);
-            byte[] postData = databuffer.array();
-            int dataLength = postData.length;
-            myHttpclient = (HttpURLConnection) url.openConnection();
-            myHttpclient.setDoOutput(true);
-            myHttpclient.setInstanceFollowRedirects(false);
-            myHttpclient.setRequestMethod("POST");
-            myHttpclient.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            myHttpclient.setRequestProperty("charset", "utf-8");
-            myHttpclient.setRequestProperty("Content-Length", Integer.toString(dataLength));
-            myHttpclient.setUseCaches(false);
-            myHttpclient.getOutputStream().write(postData);
+            myHttpclient = CreateHTTPRequestConnection(function, params);
             int response = myHttpclient.getResponseCode();
             if (response == HttpURLConnection.HTTP_OK) {
                 InputStream ioResponseStream = myHttpclient.getInputStream();
@@ -82,6 +70,23 @@ public class HttpRequest {
             assert myHttpclient != null;
             myHttpclient.disconnect();
         }
+    }
+
+    private HttpURLConnection CreateHTTPRequestConnection(String function, String params) throws IOException {
+        URL url = new URL(function);
+        ByteBuffer databuffer = Charset.forName("UTF-8").encode(params);
+        byte[] postData = databuffer.array();
+        int dataLength = postData.length;
+        HttpURLConnection myHttpclient = (HttpURLConnection) url.openConnection();
+        myHttpclient.setDoOutput(true);
+        myHttpclient.setInstanceFollowRedirects(false);
+        myHttpclient.setRequestMethod("POST");
+        myHttpclient.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        myHttpclient.setRequestProperty("charset", "utf-8");
+        myHttpclient.setRequestProperty("Content-Length", Integer.toString(dataLength));
+        myHttpclient.setUseCaches(false);
+        myHttpclient.getOutputStream().write(postData);
+        return myHttpclient;
     }
 
     public void fn_BXP_GetCall(String function) {

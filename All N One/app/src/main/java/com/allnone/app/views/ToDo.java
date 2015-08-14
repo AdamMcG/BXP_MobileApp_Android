@@ -10,15 +10,17 @@ import com.allnone.app.allnone.R;
 
 
 public class ToDo extends Activity {
+    static String strToDoName;
+    EditText enterListee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_to_do);
-
-        final EditText enterListee = (EditText)findViewById(R.id.editText_listee);
-
+        enterListee = (EditText) findViewById(R.id.editText_listee);
+        if (strToDoName != null)
+            enterListee.setText(strToDoName);
         Button buttonListee = (Button)findViewById(R.id.button_add);
 
         buttonListee.setOnClickListener(new View.OnClickListener() {
@@ -29,5 +31,11 @@ public class ToDo extends Activity {
 
            }
        });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        strToDoName = enterListee.getText().toString();
     }
 }

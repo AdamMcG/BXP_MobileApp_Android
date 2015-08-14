@@ -55,29 +55,19 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c67f11f-42ba-4275-a69a-20d0410e49d6" name="Default" comment="Commit 14: Slight change. When a particular time-date was pulled down, it broke the appointment list. Fixed now.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
+    <list default="true" id="2c67f11f-42ba-4275-a69a-20d0410e49d6" name="Default" comment="Commit 16: Adding static variables to ticket and contact">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug-unaligned.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" afterPath="$PROJECT_DIR$/app/build/outputs/apk/app-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/classes.dex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" afterPath="$PROJECT_DIR$/app/build/intermediates/resources/resources-debug.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Appointment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Appointment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Contact.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Contact.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/DiaryController.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/DiaryController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Hamster.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Hamster.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Contacts.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Contacts.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/HttpRequest.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/HttpRequest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/LoginPage.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/LoginPage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Settings.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Settings.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Today.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Today.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_rss_tabs.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/debug/layout/activity_rss_tabs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_rss_tabs.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_rss_tabs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/res/debug/menu/menu_details.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/res/debug/menu/menu_details.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeResources/debug/merger.xml" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeResources/debug/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Ticket.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Ticket.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/ToDo.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/ToDo.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="All N One.iws" />
@@ -112,13 +102,11 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/LoginPage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="137" column="75" selection-start-line="137" selection-start-column="75" selection-end-line="137" selection-end-column="75" />
+              <caret line="79" column="55" selection-start-line="79" selection-start-column="55" selection-end-line="79" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#onCreate#0;class#LoginPage#0" expanded="false" />
-                <element signature="method#fn_FillParameters#0;class#LoginPage#0" expanded="false" />
-                <element signature="e#1718#1733#0" expanded="true" />
-                <element signature="method#onButtonClick#0;class#LoginPage#0" expanded="false" />
+                <element signature="e#1929#1944#0" expanded="true" />
                 <element signature="method#onCreateOptionsMenu#0;class#LoginPage#0" expanded="false" />
                 <element signature="method#onOptionsItemSelected#0;class#LoginPage#0" expanded="false" />
                 <element signature="method#fn_createLoginParser#0;class#LoginPage#0" expanded="false" />
@@ -136,31 +124,46 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Ticket.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+              <caret line="26" column="56" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Settings.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Settings.java">
+      <file leaf-file-name="Contacts.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Contacts.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2662722">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
               <folding>
-                <element signature="method#onCreate#0;class#Settings#0" expanded="false" />
-                <element signature="method#onCreateOptionsMenu#0;class#Settings#0" expanded="false" />
-                <element signature="method#onOptionsItemSelected#0;class#Settings#0" expanded="false" />
-                <element signature="method#fn_createSettingsParser#0;class#Settings#0" expanded="false" />
-                <element signature="method#fn_ParseSettings#0;class#Settings#0" expanded="false" />
-                <element signature="method#readingThroughXMLText#0;class#Settings#0" expanded="false" />
-                <element signature="method#assigningToSettingsObject#0;class#Settings#0" expanded="false" />
-                <element signature="method#fn_createSuccessDialog#0;class#Settings#0" expanded="false" />
-                <element signature="method#fn_createErrorDialog#0;class#Settings#0" expanded="false" />
-                <element signature="class#settingsFunctionality#0;class#Settings#0" expanded="false" />
-                <element signature="method#doInBackground#0;class#settingsFunctionality#0;class#Settings#0" expanded="false" />
-                <element signature="method#onPostExecute#0;class#settingsFunctionality#0;class#Settings#0" expanded="false" />
+                <element signature="method#onCreate#0;class#Contacts#0" expanded="false" />
+                <element signature="method#onPause#0;class#Contacts#0" expanded="false" />
+                <element signature="method#onCreateOptionsMenu#0;class#Contacts#0" expanded="false" />
+                <element signature="method#onOptionsItemSelected#0;class#Contacts#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HttpRequest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/HttpRequest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="79" column="8" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
+              <folding>
+                <element signature="method#fnStrSettingParameters#0;class#HttpRequest#0" expanded="false" />
+                <element signature="method#fn_BXP_GetCall#0;class#HttpRequest#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ToDo.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/ToDo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5610236">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1614,10 +1617,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/HomePage.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/HomePage.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/HttpRequest.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Ticket.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Critical.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Contacts.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/RssActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_rss_tabs.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Today.java" />
@@ -1625,8 +1625,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Hamster.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Contact.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/DiaryController.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/LoginPage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Settings.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/LoginPage.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Ticket.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Contacts.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/HttpRequest.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/ToDo.java" />
       </list>
     </option>
   </component>
@@ -1644,8 +1648,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="7" />
     <option name="y" value="26" />
-    <option name="width" value="1280" />
+    <option name="width" value="1267" />
     <option name="height" value="915" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -2162,7 +2167,13 @@
       <option name="project" value="LOCAL" />
       <updated>1439381017203</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Commit 15:Refactoring parsing XML methods into smaller methods.">
+      <created>1439560006238</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1439560006238</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -2175,29 +2186,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="26" width="1280" height="915" extended-state="0" />
+    <frame x="7" y="26" width="1267" height="915" extended-state="0" />
     <editor active="false" />
     <layout>
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="105" y="123" width="1073" height="715" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279099" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290008" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.58536583" sideWeight="0.49683043" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5807259" sideWeight="0.49683043" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50487804" sideWeight="0.5031696" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.330413" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32916147" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32883435" sideWeight="0.4642857" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32439023" sideWeight="0.53571427" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33291614" sideWeight="0.53571427" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4643304" sideWeight="0.57512116" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279099" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24126726" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32981315" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24232633" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24489796" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279099" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="105" y="123" width="1073" height="715" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2269,7 +2280,9 @@
     <MESSAGE value="Commit 12: Added NetworkConnection check on app opening, error handling on login(Opens up a dialog which tells you the strError). Otherwise, I've decided to try only create shorter methods. any methods longer than 60 lines will be cut up, if possible. Naming will also be addressed. Proper naming/good, informative names should be used." />
     <MESSAGE value="Commit 13: Editted Settings file very slightly." />
     <MESSAGE value="Commit 14: Slight change. When a particular time-date was pulled down, it broke the appointment list. Fixed now." />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit 14: Slight change. When a particular time-date was pulled down, it broke the appointment list. Fixed now." />
+    <MESSAGE value="Commit 15:Refactoring parsing XML methods into smaller methods." />
+    <MESSAGE value="Commit 16: Adding static variables. Textboxes should contain memory until methods are called and variables are set to zero." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit 16: Adding static variables. Textboxes should contain memory until methods are called and variables are set to zero." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -2288,11 +2301,17 @@
           <properties />
           <option name="timeStamp" value="271" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Settings.java</url>
+          <line>134</line>
+          <properties />
+          <option name="timeStamp" value="339" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="339" />
+      <option name="time" value="342" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2523,13 +2542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/ToDo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31746033">
-          <caret line="15" column="55" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Tomorrow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31746033">
@@ -2556,13 +2568,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="27" selection-start-line="33" selection-start-column="27" selection-end-line="33" selection-end-column="27" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Contacts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -2641,20 +2646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Today.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30479896">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/HttpRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11673152">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/Models/Contact.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11406844">
@@ -2669,17 +2660,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Settings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5113636">
+          <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+          <folding>
+            <element signature="method#onCreate#0;class#Settings#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#Settings#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#Settings#0" expanded="false" />
+            <element signature="method#fn_createSettingsParser#0;class#Settings#0" expanded="false" />
+            <element signature="method#fn_ParseSettings#0;class#Settings#0" expanded="false" />
+            <element signature="method#readingThroughXMLText#0;class#Settings#0" expanded="false" />
+            <element signature="method#assigningToSettingsObject#0;class#Settings#0" expanded="false" />
+            <element signature="method#fn_createSuccessDialog#0;class#Settings#0" expanded="false" />
+            <element signature="method#fn_createErrorDialog#0;class#Settings#0" expanded="false" />
+            <element signature="class#settingsFunctionality#0;class#Settings#0" expanded="false" />
+            <element signature="method#doInBackground#0;class#settingsFunctionality#0;class#Settings#0" expanded="false" />
+            <element signature="method#onPostExecute#0;class#settingsFunctionality#0;class#Settings#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Today.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding>
+            <element signature="method#loadToDo#0;class#Today#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#Today#0" expanded="false" />
+            <element signature="method#getView#0;class#2731:3468" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/DiaryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4318182">
-          <caret line="45" column="7" selection-start-line="45" selection-start-column="7" selection-end-line="45" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="114" column="87" selection-start-line="114" selection-start-column="87" selection-end-line="114" selection-end-column="87" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#fn_diaryRestCallPost#0;class#DiaryController#0" expanded="false" />
             <element signature="e#1515#1530#0" expanded="true" />
-            <element signature="e#2960#2984#0" expanded="false" />
+            <element signature="method#fn_createParser#0;class#DiaryController#0" expanded="false" />
             <element signature="method#fn_parseDiaryXMLContents#0;class#DiaryController#0" expanded="false" />
             <element signature="method#ParsingDiaryData#0;class#DiaryController#0" expanded="false" />
             <element signature="method#decidingText#0;class#DiaryController#0" expanded="false" />
+            <element signature="method#getDate#0;class#DiaryController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2687,13 +2713,11 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/LoginPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="137" column="75" selection-start-line="137" selection-start-column="75" selection-end-line="137" selection-end-column="75" />
+          <caret line="79" column="55" selection-start-line="79" selection-start-column="55" selection-end-line="79" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#onCreate#0;class#LoginPage#0" expanded="false" />
-            <element signature="method#fn_FillParameters#0;class#LoginPage#0" expanded="false" />
-            <element signature="e#1718#1733#0" expanded="true" />
-            <element signature="method#onButtonClick#0;class#LoginPage#0" expanded="false" />
+            <element signature="e#1929#1944#0" expanded="true" />
             <element signature="method#onCreateOptionsMenu#0;class#LoginPage#0" expanded="false" />
             <element signature="method#onOptionsItemSelected#0;class#LoginPage#0" expanded="false" />
             <element signature="method#fn_createLoginParser#0;class#LoginPage#0" expanded="false" />
@@ -2709,29 +2733,40 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Ticket.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+          <caret line="26" column="56" selection-start-line="26" selection-start-column="56" selection-end-line="26" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Settings.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/Contacts.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2662722">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
           <folding>
-            <element signature="method#onCreate#0;class#Settings#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#Settings#0" expanded="false" />
-            <element signature="method#onOptionsItemSelected#0;class#Settings#0" expanded="false" />
-            <element signature="method#fn_createSettingsParser#0;class#Settings#0" expanded="false" />
-            <element signature="method#fn_ParseSettings#0;class#Settings#0" expanded="false" />
-            <element signature="method#readingThroughXMLText#0;class#Settings#0" expanded="false" />
-            <element signature="method#assigningToSettingsObject#0;class#Settings#0" expanded="false" />
-            <element signature="method#fn_createSuccessDialog#0;class#Settings#0" expanded="false" />
-            <element signature="method#fn_createErrorDialog#0;class#Settings#0" expanded="false" />
-            <element signature="class#settingsFunctionality#0;class#Settings#0" expanded="false" />
-            <element signature="method#doInBackground#0;class#settingsFunctionality#0;class#Settings#0" expanded="false" />
-            <element signature="method#onPostExecute#0;class#settingsFunctionality#0;class#Settings#0" expanded="false" />
+            <element signature="method#onCreate#0;class#Contacts#0" expanded="false" />
+            <element signature="method#onPause#0;class#Contacts#0" expanded="false" />
+            <element signature="method#onCreateOptionsMenu#0;class#Contacts#0" expanded="false" />
+            <element signature="method#onOptionsItemSelected#0;class#Contacts#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/Controllers/HttpRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="8" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
+          <folding>
+            <element signature="method#fnStrSettingParameters#0;class#HttpRequest#0" expanded="false" />
+            <element signature="method#fn_BXP_GetCall#0;class#HttpRequest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/allnone/app/views/ToDo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5610236">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

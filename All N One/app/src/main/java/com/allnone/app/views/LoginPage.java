@@ -31,6 +31,8 @@ import static org.xmlpull.v1.XmlPullParser.END_TAG;
 import static org.xmlpull.v1.XmlPullParser.TEXT;
 
 public class LoginPage extends Activity {
+    static String strStaticSystem;
+    static String strStaticUsername;
     EditText strSystem;
     EditText a;
     EditText strPassword;
@@ -52,6 +54,10 @@ public class LoginPage extends Activity {
 
         a = (EditText) findViewById(R.id.TFusername);
         strPassword = (EditText) findViewById(R.id.TFpassword);
+        if (strStaticSystem != null) {
+            strSystem.setText(strStaticSystem);
+            a.setText(strStaticUsername);
+        }
     }
 
     public List<NameValuePair> fn_FillParameters() {
@@ -69,7 +75,9 @@ public class LoginPage extends Activity {
     }
 
     public void onButtonClick(View v) {
-        if (v.getId() == R.id.Alogin) {
+        if (strSystem.getText() != null && v.getId() == R.id.Alogin) {
+            strStaticSystem = strSystem.getText().toString();
+            strStaticUsername = a.getText().toString();
             i = new Intent(this, HomePage.class);
             LoginFunctionality logIntoBxp = new LoginFunctionality();
             logIntoBxp.execute();
