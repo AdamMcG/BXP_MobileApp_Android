@@ -16,7 +16,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.allnone.app.Controllers.DiaryController;
+import com.allnone.app.Controllers.ListerController;
 import com.allnone.app.Models.Appointment;
+import com.allnone.app.Models.Listee;
 import com.allnone.app.Models.diary;
 import com.allnone.app.allnone.R;
 
@@ -26,6 +28,7 @@ public class Today extends Activity {
     ListView todayAppointment;
     ListView todayListee;
     diary todayDiary;
+    ListerController myController;
     Context local;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +68,8 @@ public class Today extends Activity {
         @Override
         protected String doInBackground(String... params) {
             try {
+                myController = new ListerController();
+                myController.fn_ListerPOSTRestCall("list_listee_due", "today");
                 DiaryController fillingDiary = new DiaryController();
                 String diaryFunction = "diary_today";
                 fillingDiary.fn_diaryRestCallPost(diaryFunction);
@@ -106,6 +111,22 @@ public class Today extends Activity {
             text.setText("Appointment List");
             todayAppointment.addHeaderView(headerView);
             todayAppointment.setAdapter(myAdapter);
+
+            ArrayAdapter<Listee> myAdapter2 = new ArrayAdapter<Listee>(local, android.R.layout.simple_list_item_2, android.R.id.text1, myController.getLister().getListees()) {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View view = super.getView(position, convertView, parent);
+                    TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                    TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+
+                    text1.setText(myController.getLister().getListees().get(position).strLister_Title);
+                    text2.setText("22332");
+                    return view;
+                }
+            };
+            text.setText("ToDo List");
+            todayListee.addHeaderView(headerView);
+            todayListee.setAdapter(myAdapter2);
 
             fn_createSuccessDialog("Successful retrieval!");
 

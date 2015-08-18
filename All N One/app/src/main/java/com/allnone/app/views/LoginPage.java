@@ -86,7 +86,6 @@ public class LoginPage extends Activity {
             i = new Intent(this, HomePage.class);
             LoginFunctionality logIntoBxp = new LoginFunctionality();
             logIntoBxp.execute();
-            strPassword.setText(null);
         }
     }
 
@@ -193,7 +192,7 @@ public class LoginPage extends Activity {
 
         @Override
         protected String doInBackground(String... params) {
-            String strRestFunctionURL = "http://ww3.allnone.ie/client/" + getStrSystem() + "/cti/userAPP_main.asp";
+            String strRestFunctionURL = "https://ww3.allnone.ie/client/" + getStrSystem() + "/cti/userAPP_main.asp";
             myLogin = Login.getInstance();
             myLogin.setStrUrlUsed(strRestFunctionURL);
             myClient.fn_BxpApi_PostCall(strRestFunctionURL, myClient.fnStrSettingParameters(fn_FillParameters()));

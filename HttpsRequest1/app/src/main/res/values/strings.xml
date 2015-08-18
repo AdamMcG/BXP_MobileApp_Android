@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">HttpsRequest</string>
+    <string name="get_request">Get Request</string>
+    <string name="post_request">Post Request</string>
+
+</resources>

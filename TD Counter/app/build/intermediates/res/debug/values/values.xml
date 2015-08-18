@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/testing/Desktop/AndroidStudioProjects/TD%20Counter/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="add_one">Add One</string>
+    <string name="app_name">TD Counter</string>
+    <string name="counter">Your count is: 0</string>
+    <string name="menu_settings">Settings</string>
+    <string name="sub_one">Subtract One</string>
+    <!-- From: file:/Users/testing/Desktop/AndroidStudioProjects/TD%20Counter/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AppTheme" parent="android:Theme.Light"/>
+</resources>

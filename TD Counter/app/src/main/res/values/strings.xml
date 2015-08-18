@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">TD Counter</string>
+    <string name="counter">Your count is: 0</string>
+    <string name="menu_settings">Settings</string>
+    <string name="add_one">Add One</string>
+    <string name="sub_one">Subtract One</string>
+
+</resources>

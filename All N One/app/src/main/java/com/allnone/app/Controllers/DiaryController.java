@@ -32,7 +32,7 @@ public class DiaryController {
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
     private final SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
     Login myLogin = Login.getInstance();
-    private HttpRequest myHttpClient;
+    public HttpRequest myHttpClient;
     private diary myDiary;
     private Appointment myAppointment;
 

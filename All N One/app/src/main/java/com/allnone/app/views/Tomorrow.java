@@ -1,7 +1,9 @@
 package com.allnone.app.views;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,7 +16,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.allnone.app.Controllers.DiaryController;
+import com.allnone.app.Controllers.ListerController;
 import com.allnone.app.Models.Appointment;
+import com.allnone.app.Models.Listee;
 import com.allnone.app.Models.diary;
 import com.allnone.app.allnone.R;
 
@@ -25,10 +29,12 @@ public class Tomorrow extends Activity {
     ListView tomorrowAppointment;
     ListView tomorrowListee;
     diary tomorrowDiary;
-
+    ListerController myController;
+    Context local;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        local = this;
         diaryFunctionality tomorrowFunctionality = new diaryFunctionality();
         tomorrowFunctionality.execute();
     }
@@ -62,6 +68,8 @@ public class Tomorrow extends Activity {
         @Override
         protected String doInBackground(String... params) {
             try {
+                myController = new ListerController();
+                myController.fn_ListerPOSTRestCall("list_listee_due", "tomorrow");
                 DiaryController fillingDiary = new DiaryController();
                 String diaryFunction = "diary_tomorrow";
                 fillingDiary.fn_diaryRestCallPost(diaryFunction);
@@ -102,6 +110,43 @@ public class Tomorrow extends Activity {
             text.setText("Appointment List");
             tomorrowAppointment.addHeaderView(headerView);
             tomorrowAppointment.setAdapter(myAdapter);
+            ArrayAdapter<Listee> myAdapter2 = new ArrayAdapter<Listee>(local, android.R.layout.simple_list_item_2, android.R.id.text1, myController.getLister().getListees()) {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View view = super.getView(position, convertView, parent);
+                    TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                    TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+
+                    text1.setText(myController.getLister().getListees().get(position).strLister_Title);
+                    text2.setText("22332");
+                    return view;
+                }
+            };
+            text.setText("ToDo List");
+            tomorrowListee.addHeaderView(headerView);
+            tomorrowListee.setAdapter(myAdapter2);
+            fn_createSuccessDialog("Successful retrieval!");
+
+        }
+
+        public void fn_createSuccessDialog(String successDialog) {
+            Context context = local;
+            AlertDialog.Builder noNetwork = new AlertDialog.Builder(context);
+            noNetwork.setMessage(successDialog);
+            noNetwork.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            noNetwork.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            noNetwork.create();
+            noNetwork.show();
         }
     }
 

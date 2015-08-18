@@ -85,7 +85,11 @@ public class HttpRequest {
         myHttpclient.setRequestProperty("charset", "utf-8");
         myHttpclient.setRequestProperty("Content-Length", Integer.toString(dataLength));
         myHttpclient.setUseCaches(false);
-        myHttpclient.getOutputStream().write(postData);
+        try {
+            myHttpclient.getOutputStream().write(postData);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return myHttpclient;
     }
 
