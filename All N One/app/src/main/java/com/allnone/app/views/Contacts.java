@@ -71,7 +71,7 @@ public class Contacts extends Activity {
                 text1.setText("" + myController.getMyCampaign().getListOfCampaigns().get(position).getIntId());
                 String s = (myController.getMyCampaign().getListOfCampaigns().get(position).itemsOfCampaign.get(0)
                         + " " + myController.getMyCampaign().getListOfCampaigns().get(position).itemsOfCampaign.get(1))
-                        + "\nWork Phone:" + strPhone + "\nEmail:" + strEmail;
+                        + "\nWork Phone:" + strPhone + "\nEmail:" + strEmail + "\n\n";
                 text2.setText(s);
                 return view;
             }
@@ -105,7 +105,8 @@ public class Contacts extends Activity {
         @Override
         protected String doInBackground(String... params) {
             myController.fn_RetrieveCampaignItemsByFirstName(searchterm, 469);
-
+            if (myController.getMyCampaign().getListOfCampaigns().size() == 0)
+                myController.fn_RetrieveCampaignItemsByLastName(searchterm, 469);
             return "success";
         }
 

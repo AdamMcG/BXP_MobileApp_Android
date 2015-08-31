@@ -31,8 +31,6 @@
               android:layout_height="wrap_content"
               android:layout_weight="0.5"
               android:hint="Name" />
-
-
           <Button
               android:id="@+id/button_searchcontact"
               style="?android:attr/buttonStyleSmall"
@@ -48,6 +46,6 @@
             android:id="@+id/contactListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000"/>
+            android:background="#000000" />
     </LinearLayout>
 </RelativeLayout><!-- From: file:/Users/testing/Desktop/AndroidStudioProjects/All%20N%20One/app/src/main/res/layout/activity_contacts.xml -->

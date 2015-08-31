@@ -91,8 +91,12 @@ public class CampaignController {
     }
 
     public void fn_RetrieveCampaignItemsByLastName(String searchItem, int campaignId) {
-        String returnFields = returnField + "," + returnField2 + "," + returnField3 + "," + returnField4;
         formToLookup = campaignId;
+        returnField = "strCDA_" + formToLookup + "_field_1_15";
+        returnField2 = "strCDA_" + formToLookup + "_field_3_15";
+        returnField3 = "strCDA_" + formToLookup + "_field_0_4";
+        returnField4 = "strCDA_" + formToLookup + "_field_0_6";
+        String returnFields = returnField + "," + returnField2 + "," + returnField3 + "," + returnField4;
         HttpRequest myHttpClient = new HttpRequest();
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         //region PostParameters
@@ -117,7 +121,37 @@ public class CampaignController {
         parameters.add(parameter);
         //endregion
         myHttpClient.fn_BxpApi_PostCall(myLogin.getStrUrlUsed(), myHttpClient.fnStrSettingParameters(parameters));
-        parseThroughCampaignItems(myHttpClient.fnStrGetResponseFromCall());
+        PullingDataFromXML(parseThroughCampaignItems(myHttpClient.fnStrGetResponseFromCall()));
+    }
+
+    public void fn_InjectCampaignRecordToCampaign(String subject, String description, int campaignId) {
+        formToLookup = campaignId;
+        String subjectbox = "strCDA_" + formToLookup + "_field_0_1";
+        String descriptionbox = "strCDA_" + formToLookup + "_field_0_2";
+        HttpRequest myHttpClient = new HttpRequest();
+        List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+        //region PostParameters
+        BasicNameValuePair parameter;
+        parameter = new BasicNameValuePair("strFunction", "insert_formrecord");
+        parameters.add(parameter);
+        parameter = new BasicNameValuePair("strSystem", myLogin.getStrSystemUsed());
+        parameters.add(parameter);
+        String clientId = String.valueOf(myLogin.getIntClientid());
+        parameter = new BasicNameValuePair("intClient_ID", clientId);
+        parameters.add(parameter);
+        parameter = new BasicNameValuePair("strClient_SessionField", myLogin.getStrClient_SessionField());
+        parameters.add(parameter);
+        String a = "" + campaignId;
+        parameter = new BasicNameValuePair("intCampaign_Id", a);
+        parameters.add(parameter);
+        parameter = new BasicNameValuePair("strSearch_Field", subjectbox + "[[--SEP--]]" + descriptionbox);
+        parameters.add(parameter);
+        parameter = new BasicNameValuePair("strSearch_Value", subject + "[[--SEP--]]" + description);
+        parameters.add(parameter);
+        parameter = new BasicNameValuePair("strReturn_Fields", "intCDA_" + formToLookup + "_Id");
+        parameters.add(parameter);
+        //endregion
+        myHttpClient.fn_BxpApi_PostCall(myLogin.getStrUrlUsed(), myHttpClient.fnStrSettingParameters(parameters));
     }
 
     public XmlPullParser parseThroughCampaignItems(String campaignXMLString) {
@@ -157,9 +191,8 @@ public class CampaignController {
             case START_TAG:
                 if (tagName.equals("data")) {
                     myCampaign = new Campaign();
-                } else if (tagName.equals("item")) {
+                } else if (tagName.equals("item"))
                     campaignItemInstance = new CampaignItem();
-                }
             case TEXT:
                 text = parser.getText();
                 break;

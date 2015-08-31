@@ -73,7 +73,6 @@ public class SettingController {
         }
     }
 
-
     public void parsebuttonConfigXML(XmlPullParser parser, int number) {
         try {
             String text = "";
@@ -161,7 +160,6 @@ public class SettingController {
         }
         return text;
     }
-
 
     private void buttonDecidingText(XmlPullParser parser, String text, int number) {
         String parserCheck = "strInterface_Button" + number;

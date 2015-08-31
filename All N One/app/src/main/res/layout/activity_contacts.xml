@@ -31,8 +31,6 @@
               android:layout_height="wrap_content"
               android:layout_weight="0.5"
               android:hint="Name" />
-
-
           <Button
               android:id="@+id/button_searchcontact"
               style="?android:attr/buttonStyleSmall"
