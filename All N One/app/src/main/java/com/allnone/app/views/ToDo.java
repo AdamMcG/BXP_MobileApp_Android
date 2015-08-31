@@ -26,7 +26,7 @@ public class ToDo extends Activity {
     EditText enterListee;
     ListView myListView;
     ListerController myController = new ListerController();
-
+    String listeeString = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,13 @@ public class ToDo extends Activity {
         if (strToDoName != null)
             enterListee.setText(strToDoName);
         Button buttonListee = (Button)findViewById(R.id.button_add);
+        settingButtonClickListener(buttonListee);
+        ListeeFunctionality lister = new ListeeFunctionality();
+        listeeString = enterListee.getText().toString();
+        lister.execute();
+    }
 
+    private void settingButtonClickListener(Button buttonListee) {
         buttonListee.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -46,12 +52,7 @@ public class ToDo extends Activity {
 
             }
        });
-
-
-        ListeeFunctionality lister = new ListeeFunctionality();
-        lister.execute();
     }
-
 
     public void fn_createSuccessDialog(String successDialog) {
         Context context = this;
@@ -100,11 +101,19 @@ public class ToDo extends Activity {
         }
 
         @Override
-        protected void onPostExecute(String s)
-        {
+        protected void onPostExecute(String s) {
             super.onPostExecute(s);
             Context local = getApplicationContext();
-            ArrayAdapter<Listee> myAdapter = new ArrayAdapter<Listee>(local, android.R.layout.simple_list_item_2, android.R.id.text1, myController.getLister().getListees()) {
+            ArrayAdapter<Listee> myAdapter = getListeeArrayAdapter(local);
+            View headerView = getLayoutInflater().inflate(R.layout.headerforlist, null);
+            TextView text = (TextView) headerView.findViewById(R.id.headerView);
+            text.setText("ToDo List");
+            myListView.addHeaderView(headerView);
+            myListView.setAdapter(myAdapter);
+        }
+
+        private ArrayAdapter<Listee> getListeeArrayAdapter(final Context local) {
+            return new ArrayAdapter<Listee>(local, android.R.layout.simple_list_item_2, android.R.id.text1, myController.getLister().getListees()) {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
                     View view = super.getView(position, convertView, parent);
@@ -116,20 +125,16 @@ public class ToDo extends Activity {
                     return view;
                 }
             };
-            View headerView = getLayoutInflater().inflate(R.layout.headerforlist, null);
-            TextView text = (TextView) headerView.findViewById(R.id.headerView);
-            text.setText("ToDo List");
-            myListView.addHeaderView(headerView);
-            myListView.setAdapter(myAdapter);
         }
     }
-    private class insertListFunctionality extends AsyncTask<String, String, String>
-    {
+
+    private class insertListFunctionality extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... params) {
             try {
-                myController.fn_ListerPOSTRestCall("insert_listee",enterListee.getText().toString());
+                String a = listeeString;
+                myController.fn_ListerPOSTRestCall("insert_listee", a);
             } catch (ParseException e) {
                 e.printStackTrace();
             }

@@ -2,6 +2,7 @@ package com.allnone.app.views;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,22 +10,31 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.allnone.app.Models.Login;
+import com.allnone.app.Models.Setting;
 import com.allnone.app.allnone.R;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+
+import static com.allnone.app.allnone.R.layout.activity_home_page;
 
 
 public class HomePage extends Activity {
+    public Setting mysetting = new Setting();
     private Intent diaryIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Login myLogin = Login.getInstance();
-        setContentView(R.layout.activity_home_page);
+        setContentView(activity_home_page);
         String username = getIntent().getStringExtra("Hi");
-
         TextView tv = (TextView) findViewById(R.id.TVusername);
         tv.setText(username);
+    }
+
+    Drawable drawable_from_url(String url, String sourcename) throws IOException {
+        return Drawable.createFromStream(((InputStream) new URL(url).getContent()), sourcename);
     }
 
     @Override

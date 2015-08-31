@@ -48,18 +48,7 @@ public class HttpRequest {
         try {
             myHttpclient = CreateHTTPRequestConnection(function, params);
             int response = myHttpclient.getResponseCode();
-            if (response == HttpURLConnection.HTTP_OK) {
-                InputStream ioResponseStream = myHttpclient.getInputStream();
-                InputStreamReader ioStreamReader = new InputStreamReader(ioResponseStream);
-                BufferedReader bIOReader = new BufferedReader(ioStreamReader);
-                String strReaderLine;
-                strResponseFromCall.setLength(0);
-                while ((strReaderLine = bIOReader.readLine()) != null) {
-                    strResponseFromCall.append(strReaderLine);
-
-                }
-                System.out.println(fnStrGetResponseFromCall());
-            }
+            handlingSuccessfulPostResponse(myHttpclient, response);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (ProtocolException e) {
@@ -69,6 +58,21 @@ public class HttpRequest {
         } finally {
             assert myHttpclient != null;
             myHttpclient.disconnect();
+        }
+    }
+
+    private void handlingSuccessfulPostResponse(HttpURLConnection myHttpclient, int response) throws IOException {
+        if (response == HttpURLConnection.HTTP_OK) {
+            InputStream ioResponseStream = myHttpclient.getInputStream();
+            InputStreamReader ioStreamReader = new InputStreamReader(ioResponseStream);
+            BufferedReader bIOReader = new BufferedReader(ioStreamReader);
+            String strReaderLine;
+            strResponseFromCall.setLength(0);
+            while ((strReaderLine = bIOReader.readLine()) != null) {
+                strResponseFromCall.append(strReaderLine);
+
+            }
+            System.out.println(fnStrGetResponseFromCall());
         }
     }
 

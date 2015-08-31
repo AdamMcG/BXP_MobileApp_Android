@@ -4,10 +4,11 @@ import java.util.Date;
 
 /**
  * Created by testing on 06/08/15.
+ * fgtrstrtt
  */
 public class Listee
 {
-    public int intLister_Id ;
+    public int intLister_Id;
     public int intLister_ClientId;
     public String strLister_Complete;
     public String strLister_Personal;

@@ -72,10 +72,10 @@ public final class R {
         public static final int textView8=0x7f080004;
         public static final int textView_latestNews=0x7f080018;
         public static final int today=0x7f08002b;
-        public static final int today_AppointmentList=0x7f08002e;
-        public static final int today_listeeList=0x7f08002d;
-        public static final int tomorrow_AppointmentList=0x7f080031;
-        public static final int tomorrow_listeeList=0x7f080030;
+        public static final int today_AppointmentList=0x7f08002d;
+        public static final int today_listeeList=0x7f08002e;
+        public static final int tomorrow_AppointmentList=0x7f080030;
+        public static final int tomorrow_listeeList=0x7f080031;
     }
     public static final class layout {
         public static final int activity_contacts=0x7f030000;

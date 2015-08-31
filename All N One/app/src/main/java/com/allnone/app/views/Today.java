@@ -94,7 +94,19 @@ public class Today extends Activity {
             todayAppointment = (ListView) findViewById(R.id.today_AppointmentList);
             todayListee = (ListView) findViewById(R.id.today_listeeList);
             Context local = getApplicationContext();
-            ArrayAdapter<Appointment> myAdapter = new ArrayAdapter<Appointment>(local, android.R.layout.simple_list_item_2, android.R.id.text1, todayDiary.colAppointment) {
+            ArrayAdapter<Appointment> myAdapter = getAppointmentArrayAdapter(local);
+            todayAppointment.setAdapter(myAdapter);
+            View headerView2 = getLayoutInflater().inflate(R.layout.headerforlist, null);
+            ArrayAdapter<Listee> myAdapter2 = getListeeArrayAdapter(local);
+            todayListee.addHeaderView(headerView2);
+            todayListee.setAdapter(myAdapter2);
+
+            fn_createSuccessDialog("Successful retrieval!");
+
+        }
+
+        private ArrayAdapter<Appointment> getAppointmentArrayAdapter(final Context local) {
+            return new ArrayAdapter<Appointment>(local, android.R.layout.simple_list_item_2, android.R.id.text1, todayDiary.colAppointment) {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
                     View view = super.getView(position, convertView, parent);
@@ -106,13 +118,10 @@ public class Today extends Activity {
                     return view;
                 }
             };
-            View headerView = getLayoutInflater().inflate(R.layout.headerforlist, null);
-            TextView text = (TextView) headerView.findViewById(R.id.headerView);
-            text.setText("Appointment List");
-            todayAppointment.addHeaderView(headerView);
-            todayAppointment.setAdapter(myAdapter);
+        }
 
-            ArrayAdapter<Listee> myAdapter2 = new ArrayAdapter<Listee>(local, android.R.layout.simple_list_item_2, android.R.id.text1, myController.getLister().getListees()) {
+        private ArrayAdapter<Listee> getListeeArrayAdapter(final Context local) {
+            return new ArrayAdapter<Listee>(local, android.R.layout.simple_list_item_2, android.R.id.text1, myController.getLister().getListees()) {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
                     View view = super.getView(position, convertView, parent);
@@ -124,12 +133,6 @@ public class Today extends Activity {
                     return view;
                 }
             };
-            text.setText("ToDo List");
-            todayListee.addHeaderView(headerView);
-            todayListee.setAdapter(myAdapter2);
-
-            fn_createSuccessDialog("Successful retrieval!");
-
         }
 
         public void fn_createSuccessDialog(String successDialog) {

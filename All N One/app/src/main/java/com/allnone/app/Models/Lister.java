@@ -13,6 +13,12 @@ public class Lister
 {
     //region Accessor Methods
 
+    //endregion
+    private List<Listee> listees = new ArrayList<Listee>();
+    private String strFunction;
+    private int intError;
+    private String strError;
+
     public String getStrError() {
         return strError;
     }
@@ -44,12 +50,6 @@ public class Lister
     public void setListees(List<Listee> listees) {
         this.listees = listees;
     }
-    //endregion
-    private List<Listee> listees = new ArrayList<Listee>();
-
-    private String strFunction;
-    private int intError;
-    private String strError;
 
 
 

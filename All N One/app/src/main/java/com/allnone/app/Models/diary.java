@@ -35,7 +35,7 @@ public class diary implements Serializable {
     public void setIntErrorId(int intErrorId) {
         this.intErrorId = intErrorId;
     }
-    //endregion
+
 
     public Date getDtePeriodStart() {
         return dtePeriodStart;
@@ -60,4 +60,5 @@ public class diary implements Serializable {
     public void setStrError(String strError) {
         this.strError = strError;
     }
+    //endregion
 }

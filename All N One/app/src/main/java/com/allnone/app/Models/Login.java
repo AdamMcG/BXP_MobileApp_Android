@@ -12,7 +12,6 @@ public class Login {
     private int intClientid;
     private int intError;
     private String strUrlUsed;
-
     private String strPassword;
     private String strSystemUsed;
     private String strClient_SessionField;
@@ -22,19 +21,6 @@ public class Login {
 
 
     public Login() {
-
-    }
-
-    public Login(String system, String username, String password, String function, String sessionField, int clientID,
-                 String error) {
-        getInstance();
-        instance.intClientid = clientID;
-        instance.strClient_SessionField = sessionField;
-        instance.strError = error;
-        instance.strSystemUsed = system;
-        instance.strFunction = function;
-        instance.strUserName = username;
-        instance.strPassword = password;
 
     }
 

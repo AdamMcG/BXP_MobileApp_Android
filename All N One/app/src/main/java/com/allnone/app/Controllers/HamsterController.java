@@ -1,7 +1,8 @@
 package com.allnone.app.Controllers;
 
-import com.allnone.app.Models.*;
-
+import com.allnone.app.Models.Hamster;
+import com.allnone.app.Models.ListOfHamsters;
+import com.allnone.app.Models.Login;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -14,7 +15,6 @@ import java.io.StringReader;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TimeZone;
 
 import static org.xmlpull.v1.XmlPullParser.END_TAG;
 import static org.xmlpull.v1.XmlPullParser.START_TAG;
@@ -28,19 +28,17 @@ import static org.xmlpull.v1.XmlPullParser.TEXT;
  */
 public class HamsterController
 {
+    public HttpRequest myHttp;
+    String[] elements = {"green", "jade", "emerald", "apple", "help", "white", "olive", "lime", "suggestion", "newUser", "excellent",
+            "good", "poor", "awful"};
     private Login myLogin = Login.getInstance();
+    private ListOfHamsters hamLists;
 
     public ListOfHamsters getHamLists() {
         return hamLists;
     }
 
-    private ListOfHamsters hamLists;
-    public HttpRequest myHttp;
-    String[] elements = {"green","jade","emerald","apple","help","white","olive","lime","suggestion","newUser","excellent",
-            "good","poor","awful"};
-
-    public void fn_HamsterRESTPostCall()
-    {
+    public void fn_HamsterRESTPostCall() {
         myHttp = new HttpRequest();
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         BasicNameValuePair parameter = new BasicNameValuePair("strFunction", "list_hamsters");
@@ -61,8 +59,6 @@ public class HamsterController
             xmlParsFact.setNamespaceAware(true);
             parser = xmlParsFact.newPullParser();
             parser.setInput(new StringReader(xmlString));
-
-
         } catch (XmlPullParserException e) {
             e.printStackTrace();
         }
@@ -112,13 +108,13 @@ public class HamsterController
         } else if (parser.getName().equals("strError")) {
            hamLists.setStrError(text);
         }
-        for(int i= 0; i<elements.length; i++)
-         if (parser.getName().equals(elements[i])) {
-            Hamster objHamster = new Hamster();
-             objHamster.setName(elements[i]);
-             objHamster.setDetail(Integer.parseInt(text));
-             hamLists.getListOfHamsters().add(objHamster);
-        }
+        for (String element : elements)
+            if (parser.getName().equals(element)) {
+                Hamster objHamster = new Hamster();
+                objHamster.setName(element);
+                objHamster.setDetail(Integer.parseInt(text));
+                hamLists.getListOfHamsters().add(objHamster);
+            }
     }
 
 }

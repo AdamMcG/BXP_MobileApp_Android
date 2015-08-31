@@ -39,14 +39,6 @@
                 android:onClick="loadToDo"
                 android:text="Add To Do" />
         </LinearLayout>
-
-        <ListView
-            android:id="@+id/today_listeeList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.5"
-            android:background="#a0e524" />
         <ListView
             android:id="@+id/today_AppointmentList"
             android:layout_width="match_parent"
@@ -54,6 +46,14 @@
             android:layout_marginTop="10dp"
             android:layout_weight="0.5"
             android:background="#4b96e2" />
+        <ListView
+            android:id="@+id/today_listeeList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0.5"
+            android:background="#a0e524" />
+
     </LinearLayout>
 
 </RelativeLayout>

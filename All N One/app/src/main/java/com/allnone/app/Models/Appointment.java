@@ -16,6 +16,7 @@ public class Appointment {
     private Date getDteAppointmentEnd;
     private String strUrl;
 
+    //region AccessorMethods
     public int getIntAppointmentid() {
         return intAppointmentid;
     }
@@ -39,6 +40,7 @@ public class Appointment {
     public void setDteAppointmentStart(Date dteAppointmentStart) {
         this.dteAppointmentStart = dteAppointmentStart;
     }
+
     public void setGetDteAppointmentEnd(Date getDteAppointmentEnd) {
         this.getDteAppointmentEnd = getDteAppointmentEnd;
     }
@@ -58,4 +60,5 @@ public class Appointment {
     public String toString() {
         return String.format("%d: %s", getIntAppointmentid(), getStrAppointmentTitle());
     }
+    //endregion
 }

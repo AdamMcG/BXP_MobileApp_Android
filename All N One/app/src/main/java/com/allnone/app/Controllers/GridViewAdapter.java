@@ -2,8 +2,6 @@ package com.allnone.app.Controllers;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.allnone.app.Models.Hamster;
-import com.allnone.app.allnone.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +54,25 @@ public class GridViewAdapter extends BaseAdapter
         }
         TextView tview1 = (TextView) convertView.findViewById(android.R.id.text1);
         TextView tview2 = (TextView) convertView.findViewById(android.R.id.text2);
+        settingRowColours(position, tview1, tview2);
+        settingAttributesToTextViews(position, tview1, tview2);
+
+        return convertView;
+    }
+
+    private void settingAttributesToTextViews(int position, TextView tview1, TextView tview2) {
+        tview1.setText(items.get(position).getName());
+        tview1.setTextColor(Color.parseColor("#FFFFFF"));
+        String a = String.valueOf(items.get(position).getDetail());
+        tview2.setText(a);
+        tview1.setTextSize(12);
+        tview2.setTextColor(Color.parseColor("#FFFFF0"));
+        tview2.setTextSize(30);
+        tview1.setGravity(Gravity.CENTER);
+        tview2.setGravity(Gravity.CENTER);
+    }
+
+    private void settingRowColours(int position, TextView tview1, TextView tview2) {
         if (items.get(position).getName().equals("green") || items.get(position).getName().equals("jade")
                 || items.get(position).getName().equals("emerald") || items.get(position).getName().equals("apple")
                 || items.get(position).getName().equals("help")) {
@@ -72,17 +89,5 @@ public class GridViewAdapter extends BaseAdapter
             tview1.setBackgroundColor(Color.parseColor("#FF3232"));
             tview2.setBackgroundColor(Color.parseColor("#FF3232"));
           }
-
-        tview1.setText(items.get(position).getName());
-       tview1.setTextColor(Color.parseColor("#FFFFFF"));
-        String a = String.valueOf(items.get(position).getDetail());
-        tview2.setText(a);
-        tview1.setTextSize(18);
-        tview2.setTextColor(Color.parseColor("#FFFFF0"));
-        tview2.setTextSize(80);
-        tview1.setGravity(Gravity.CENTER);
-        tview2.setGravity(Gravity.CENTER);
-
-        return convertView;
     }
 }

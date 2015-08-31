@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.allnone.app.Controllers.HttpRequest;
+import com.allnone.app.Controllers.SettingController;
 import com.allnone.app.Models.Login;
 import com.allnone.app.allnone.R;
 
@@ -33,6 +34,7 @@ import static org.xmlpull.v1.XmlPullParser.TEXT;
 public class LoginPage extends Activity {
     static String strStaticSystem;
     static String strStaticUsername;
+    SettingController myController = new SettingController();
     EditText strSystem;
     EditText a;
     EditText strPassword;
@@ -202,6 +204,8 @@ public class LoginPage extends Activity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            myController.fn_SettingsPostCall(strRestFunctionURL);
+            myController.fn_ButtonsPostCall(strRestFunctionURL, 10);
             return "success";
         }
 

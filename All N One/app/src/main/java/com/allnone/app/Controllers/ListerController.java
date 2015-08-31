@@ -1,12 +1,8 @@
 package com.allnone.app.Controllers;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-
+import com.allnone.app.Models.Listee;
 import com.allnone.app.Models.Lister;
 import com.allnone.app.Models.Login;
-import com.allnone.app.Models.Listee;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -19,7 +15,6 @@ import java.io.StringReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -37,11 +32,11 @@ public class ListerController
 {
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
     private final SimpleDateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
-    private Lister myLister;
     public HttpRequest myHttpClient;
+    String[] elements;
+    private Lister myLister;
     private Login myLogin = Login.getInstance();
     private Listee myTodo;
-    String[] elements;
 
     {
         elements = new String[]{"intLister_Id", "intLister_ClientId", "strLister_Complete", "strLister_Personal",
@@ -57,6 +52,7 @@ public class ListerController
      return myLister;
     }
 
+    //Send post up to server for XML retrieval.
     public void fn_ListerPOSTRestCall(String ListerFunction, String day) throws ParseException {
         myHttpClient = new HttpRequest();
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
@@ -111,8 +107,7 @@ public class ListerController
         //endregion
     }
 
-
-
+    //Create a parser for parsing.
     public XmlPullParser fn_createParser(String xmlString) {
        XmlPullParser parser = null;
             try {
@@ -128,6 +123,7 @@ public class ListerController
         return parser;
     }
 
+    //Pull data into Parser for parsing
     public void fn_parseListerXMLContents(XmlPullParser parser) throws ParseException {
         try {
             TimeZone time = TimeZone.getTimeZone("UTC");
@@ -147,6 +143,7 @@ public class ListerController
         }
     }
 
+    //Read through XML, begin pulling data out.
     private String fn_parsingListerContent(XmlPullParser parser, String text, int eventType, String tagName) throws ParseException {
         switch (eventType) {
             case START_TAG:
@@ -164,6 +161,7 @@ public class ListerController
         return text;
     }
 
+    //Pull data out; assign to class variables.
     private void decidingText(XmlPullParser parser, String text) throws ParseException {
         if (parser.getName().equals("strFunction")) {
            myLister.setStrFunction(text);
@@ -173,58 +171,48 @@ public class ListerController
         } else if (parser.getName().equals("strError")) {
             myLister.setStrError(text);
         } else if (parser.getName().equals(elements[0])) {
-            int integer = Integer.parseInt(text);
-            myTodo.intLister_Id = integer;
+            myTodo.intLister_Id = Integer.parseInt(text);
         } else if (parser.getName().equals(elements[1])) {
-            int integer = Integer.parseInt(text);
-            myTodo.intLister_ClientId = integer;
+            myTodo.intLister_ClientId = Integer.parseInt(text);
         } else if (parser.getName().equals(elements[2])) {
             myTodo.strLister_Complete = text;
         } else if (parser.getName().equals(elements[3])) {
             myTodo.strLister_Personal = text;
         } else if (parser.getName().equals(elements[4])) {
-            Date dateEnd = dateFormat2.parse(text);
-            myTodo.dteLister_CompleteDate = (dateEnd);
+            myTodo.dteLister_CompleteDate = (dateFormat2.parse(text));
         } else if (parser.getName().equals(elements[5])) {
             myTodo.strLister_Title = text;
         } else if (parser.getName().equals(elements[6])) {
-            myTodo.strLister_Description = text;}
-        else if (parser.getName().equals(elements[7])) {
-            myTodo.strLister_Deadline = text;}
-        else if (parser.getName().equals(elements[8])) {
+            myTodo.strLister_Description = text;
+        } else if (parser.getName().equals(elements[7])) {
+            myTodo.strLister_Deadline = text;
+        } else if (parser.getName().equals(elements[8])) {
             myTodo.strLister_CategoryPersonal = text;
         } else if (parser.getName().equals(elements[9])) {
-            int integer = Integer.parseInt(text);
-            myTodo.intLister_LinkId1 = integer;
+            myTodo.intLister_LinkId1 = Integer.parseInt(text);
         } else if (parser.getName().equals(elements[10])) {
-            int integer = Integer.parseInt(text);
-            myTodo.intLister_LinkId2= integer;
+            myTodo.intLister_LinkId2 = Integer.parseInt(text);
         } else if (parser.getName().equals(elements[11])) {
-            int integer = Integer.parseInt(text);
-            myTodo.intLister_LinkId3 = integer;
+            myTodo.intLister_LinkId3 = Integer.parseInt(text);
         } else if (parser.getName().equals(elements[12])) {
-            int integer = Integer.parseInt(text);
-            myTodo.intLister_LinkId4 = integer;
+            myTodo.intLister_LinkId4 = Integer.parseInt(text);
         } else if (parser.getName().equals(elements[13])) {
             myTodo.strLister_eCourseRef = text;
         }else if (parser.getName().equals(elements[14])) {
-            int integer = Integer.parseInt(text);
-            myTodo.intLister_FromId = integer;
+            myTodo.intLister_FromId = Integer.parseInt(text);
         } else if (parser.getName().equals(elements[15])) {
             myTodo.strLister_FromDate = text;
         } else if (parser.getName().equals(elements[16])) {
             myTodo.strLister_FromSource = text;
         } else if (parser.getName().equals(elements[17])) {
-            int integer = Integer.parseInt(text);
-            myTodo.intLister_ProjectId = integer;
-        } else if (parser.getName().equals(elements[18])) {
-            int integer = Integer.parseInt(text);
-            myTodo.intLister_MeetingId = integer;
-        } else if (parser.getName().equals(elements[19])) {
-            int integer = Integer.parseInt(text);
-            myTodo.intLister_MeetingActionPointId = integer;
+            myTodo.intLister_ProjectId = Integer.parseInt(text);
+        } else {
+            if (parser.getName().equals(elements[18])) {
+                myTodo.intLister_MeetingId = Integer.parseInt(text);
+            } else if (parser.getName().equals(elements[19])) {
+                myTodo.intLister_MeetingActionPointId = Integer.parseInt(text);
+            } else if (parser.getName().equals("item"))
+                myLister.getListees().add(myTodo);
         }
-        else if (parser.getName().equals("item"))
-            myLister.getListees().add(myTodo);
     }
 }
