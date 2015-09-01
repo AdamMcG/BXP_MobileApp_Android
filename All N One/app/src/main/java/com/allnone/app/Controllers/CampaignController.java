@@ -55,6 +55,43 @@ public class CampaignController {
         this.myCampaign = myCampaign;
     }
 
+
+    public void fnSearchByFullName(String searchItem, int campaignId) {
+        String[] searchWord = searchItem.split(" ");
+        formToLookup = campaignId;
+        returnField = "strCDA_" + formToLookup + "_field_1_15";
+        returnField2 = "strCDA_" + formToLookup + "_field_3_15";
+        returnField3 = "strCDA_" + formToLookup + "_field_0_4";
+        returnField4 = "strCDA_" + formToLookup + "_field_0_6";
+        String returnFields = returnField + "," + returnField2 + "," + returnField3 + "," + returnField4;
+        HttpRequest myHttpClient = new HttpRequest();
+        List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+        //region PostParameters
+        BasicNameValuePair parameter;
+        parameter = new BasicNameValuePair("strFunction", "formlookup");
+        parameters.add(parameter);
+        parameter = new BasicNameValuePair("strSystem", myLogin.getStrSystemUsed());
+        parameters.add(parameter);
+        String clientId = String.valueOf(myLogin.getIntClientid());
+        parameter = new BasicNameValuePair("intClient_ID", clientId);
+        parameters.add(parameter);
+        parameter = new BasicNameValuePair("strClient_SessionField", myLogin.getStrClient_SessionField());
+        parameters.add(parameter);
+        String a = "" + campaignId;
+        parameter = new BasicNameValuePair("intCampaign_Id", a);
+        parameters.add(parameter);
+        parameter = new BasicNameValuePair("strSearch_Field", returnField + "[[--SEP--]]" + returnField2);
+        parameters.add(parameter);
+        parameter = new BasicNameValuePair("strSearch_Value", searchWord[0] + "[[--SEP--]]" + searchWord[1]);
+        parameters.add(parameter);
+        parameter = new BasicNameValuePair("strReturn_Fields", returnFields);
+        parameters.add(parameter);
+        //endregion
+        myHttpClient.fn_BxpApi_PostCall(myLogin.getStrUrlUsed(), myHttpClient.fnStrSettingParameters(parameters));
+        XmlPullParser mySetupParser = parseThroughCampaignItems(myHttpClient.fnStrGetResponseFromCall());
+        PullingDataFromXML(mySetupParser);
+    }
+
     public void fn_RetrieveCampaignItemsByFirstName(String searchItem, int campaignId) {
         formToLookup = campaignId;
         returnField = "strCDA_" + formToLookup + "_field_1_15";

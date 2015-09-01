@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -57,6 +58,8 @@ public class LoginPage extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences myCache = this.getSharedPreferences("com.allnone.app", Context.MODE_PRIVATE);
+        myCache.edit().clear();
         local = this;
         setContentView(R.layout.activity_login_page);
         strSystem = (EditText) findViewById(R.id.TFsystem);
@@ -200,7 +203,6 @@ public class LoginPage extends Activity {
             myClient.fn_BxpApi_PostCall(strRestFunctionURL, myClient.fnStrSettingParameters(fn_FillParameters()));
             try {
                 fn_ParsingThroughXMLDocument(fn_createLoginParser(myClient.fnStrGetResponseFromCall()));
-
             } catch (IOException e) {
                 e.printStackTrace();
             }

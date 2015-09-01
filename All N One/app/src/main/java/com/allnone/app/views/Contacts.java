@@ -104,9 +104,13 @@ public class Contacts extends Activity {
 
         @Override
         protected String doInBackground(String... params) {
-            myController.fn_RetrieveCampaignItemsByFirstName(searchterm, 469);
-            if (myController.getMyCampaign().getListOfCampaigns().size() == 0)
-                myController.fn_RetrieveCampaignItemsByLastName(searchterm, 469);
+            if (searchterm.contains(" ")) {
+                myController.fnSearchByFullName(searchterm, 469);
+            } else {
+                myController.fn_RetrieveCampaignItemsByFirstName(searchterm, 469);
+                if (myController.getMyCampaign().getListOfCampaigns().size() == 0)
+                    myController.fn_RetrieveCampaignItemsByLastName(searchterm, 469);
+            }
             return "success";
         }
 

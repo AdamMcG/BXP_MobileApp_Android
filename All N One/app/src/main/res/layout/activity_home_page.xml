@@ -21,8 +21,8 @@
          android:layout_height="wrap_content"
          android:layout_alignLeft="@+id/button_todo"
          android:layout_alignParentTop="true"
-         android:layout_marginLeft="45dp"
-         android:text="Hi ,"
+         android:layout_marginLeft="10dp"
+         android:text="Hi,"
          android:textAppearance="?android:attr/textAppearanceLarge"
          android:textIsSelectable="true"
          android:textSize="80px" />
@@ -32,13 +32,23 @@
          android:layout_height="wrap_content"
          android:layout_alignParentTop="true"
          android:layout_toRightOf="@+id/textView10"
-         android:layout_weight="1"
+         android:layout_weight="0.3"
          android:gravity="left"
          android:text="@string/emptyString"
          android:textAppearance="?android:attr/textAppearanceLarge"
          android:textSize="80px"
          android:textStyle="italic" />
 
+     <Button
+         android:id="@+id/logout"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight="0.5"
+         android:onClick="logout"
+         android:text="Logout"
+         android:textColor="#f3ff3e">
+
+     </Button>
  </LinearLayout>
 
 
@@ -118,7 +128,6 @@
 
 
 </LinearLayout>
-
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"

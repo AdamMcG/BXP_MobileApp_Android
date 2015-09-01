@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -15,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.allnone.app.Models.Login;
 import com.allnone.app.allnone.R;
 import com.allnone.app.data.RssItem;
 import com.allnone.app.listeners.ListListener;
@@ -24,13 +26,13 @@ import java.util.List;
 
 public class RssActivity extends Activity {
     private RssActivity local;
-
+    private SharedPreferences retrievalCache;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rss);
-
         local = this;
+        retrievalCache = this.getSharedPreferences("com.allnone.app", Context.MODE_PRIVATE);
         GetRSSDataTask task;
         boolean check = fn_checkConnectivity();
         if (!check) {
@@ -80,10 +82,22 @@ public class RssActivity extends Activity {
     }
 
     public void toLogin(View view) {
-        Intent intent = new Intent(this, LoginPage.class);
+        Intent intent = new Intent(this, HomePage.class);
+        String check = retrievalCache.getString("strClient_SessionField", "N/A");
+        int idCheck = retrievalCache.getInt("intClientId", 0);
+        if (check.equals("N/A")) {
+            intent = new Intent(this, LoginPage.class);
+        } else {
+            Login.getInstance().setStrUrlUsed(retrievalCache.getString("URL", "N/W"));
+            Login.getInstance().setStrClient_SessionField(check);
+            Login.getInstance().setIntClientid(idCheck);
+            Login.getInstance().setStrUserName(retrievalCache.getString("userName", "N/W"));
+            Login.getInstance().setStrSystemUsed(retrievalCache.getString("system", "N/W"));
+            Login.getInstance().setStrFunction(retrievalCache.getString("system", "N/W"));
+            intent.putExtra("Hi", Login.getInstance().getStrUserName() + "!");
+        }
         startActivity(intent);
     }
-
     private class GetRSSDataTask extends AsyncTask<String, Void, List<RssItem>> {
         @Override
         protected List<RssItem> doInBackground(String... urls) {

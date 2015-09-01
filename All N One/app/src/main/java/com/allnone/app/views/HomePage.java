@@ -1,7 +1,9 @@
 package com.allnone.app.views;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.allnone.app.Models.Login;
 import com.allnone.app.Models.Setting;
 import com.allnone.app.allnone.R;
 
@@ -23,14 +26,28 @@ import static com.allnone.app.allnone.R.layout.activity_home_page;
 public class HomePage extends Activity {
     public Setting mysetting = new Setting();
     private Intent diaryIntent;
+    private SharedPreferences myCaches;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(activity_home_page);
+        myCaches = this.getSharedPreferences("com.allnone.app", Context.MODE_PRIVATE);
+        fnStoreCache();
         String username = getIntent().getStringExtra("Hi");
         TextView tv = (TextView) findViewById(R.id.TVusername);
         tv.setText(username);
+    }
+
+    private void fnStoreCache() {
+        Login myLogin = Login.getInstance();
+        myCaches.edit().putString("URL", myLogin.getStrUrlUsed()).apply();
+        myCaches.edit().putString("system", myLogin.getStrSystemUsed()).apply();
+        myCaches.edit().putString("function", myLogin.getStrFunction()).apply();
+        myCaches.edit().putString("userName", myLogin.getStrUserName()).apply();
+        myCaches.edit().putInt("intClientId", myLogin.getIntClientid()).apply();
+        myCaches.edit().putString("strClient_SessionField", myLogin.getStrClient_SessionField()).apply();
+
     }
 
     Drawable drawable_from_url(String url, String sourcename) throws IOException {
@@ -48,6 +65,12 @@ public class HomePage extends Activity {
         int id = item.getItemId();
 
         return id == R.id.action_settings || super.onOptionsItemSelected(item);
+    }
+
+    public void logout(View view) {
+        myCaches.edit().clear().apply();
+        Intent intent = new Intent(this, RssActivity.class);
+        startActivity(intent);
     }
 
     public void loadToDo(View view) {
