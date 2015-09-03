@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -12,12 +16,18 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.allnone.app.Controllers.ListerController;
 import com.allnone.app.Models.Listee;
+import com.allnone.app.Models.Setting;
 import com.allnone.app.allnone.R;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.ParseException;
 
 
@@ -25,12 +35,15 @@ public class ToDo extends Activity {
     static String strToDoName;
     EditText enterListee;
     ListView myListView;
+    Drawable imageBackground = null;
     ListerController myController = new ListerController();
     String listeeString = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do);
+        backgrounfunctionality funct = new backgrounfunctionality();
+        funct.execute();
         myListView = (ListView) findViewById(R.id.ListOfToDoListees);
         enterListee = (EditText) findViewById(R.id.editText_listee);
         if (strToDoName != null)
@@ -47,11 +60,11 @@ public class ToDo extends Activity {
 
             @Override
             public void onClick(View v) {
-                  insertListFunctionality myFunction = new insertListFunctionality();
-                    myFunction.execute();
+                insertListFunctionality myFunction = new insertListFunctionality();
+                myFunction.execute();
 
             }
-       });
+        });
     }
 
     public void fn_createSuccessDialog(String successDialog) {
@@ -80,8 +93,7 @@ public class ToDo extends Activity {
         strToDoName = enterListee.getText().toString();
     }
 
-    private class ListeeFunctionality extends AsyncTask<String, String, String>
-    {
+    private class ListeeFunctionality extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute()
         {
@@ -127,6 +139,39 @@ public class ToDo extends Activity {
             };
         }
     }
+
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
+    }
+
+    private class backgrounfunctionality extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            Setting mysetting = new Setting();
+            try {
+                imageBackground = drawableFromUrl(mysetting.getStrInterface_Image_Background());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return "success";
+        }
+
+        @Override
+        protected void onPostExecute(String s)
+        {
+            super.onPostExecute(s);
+            RelativeLayout mylayout = (RelativeLayout) findViewById(R.id.relLayoutToDo);
+            mylayout.setBackground(imageBackground);
+        }
+    }
+
 
     private class insertListFunctionality extends AsyncTask<String, String, String> {
 

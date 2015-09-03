@@ -1,11 +1,18 @@
 package com.allnone.app.views;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,26 +20,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.allnone.app.Controllers.DiaryController;
 import com.allnone.app.Controllers.ListerController;
 import com.allnone.app.Models.Appointment;
 import com.allnone.app.Models.Listee;
+import com.allnone.app.Models.Setting;
 import com.allnone.app.Models.diary;
 import com.allnone.app.allnone.R;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.ParseException;
 
 public class Today extends Activity {
     ListView todayAppointment;
+    Setting mySettings = new Setting();
     ListView todayListee;
     diary todayDiary;
     ListerController myController;
     Context local;
+    Drawable imageBackground = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         local = this;
         diaryFunctionality dFunct = new diaryFunctionality();
         dFunct.execute();
@@ -58,7 +75,19 @@ public class Today extends Activity {
 
     }
 
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
+    }
+
     private class diaryFunctionality extends AsyncTask<String, String, String> {
+       ProgressDialog mProgress;
 
         @Override
         protected void onPreExecute() {
@@ -68,6 +97,7 @@ public class Today extends Activity {
         @Override
         protected String doInBackground(String... params) {
             try {
+                imageBackground = drawableFromUrl(mySettings.getStrInterface_Image_Background());
                 myController = new ListerController();
                 myController.fn_ListerPOSTRestCall("list_listee_due", "today");
                 DiaryController fillingDiary = new DiaryController();
@@ -75,6 +105,8 @@ public class Today extends Activity {
                 fillingDiary.fn_diaryRestCallPost(diaryFunction);
                 todayDiary = fillingDiary.getMyDiary();
             } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 
@@ -86,11 +118,13 @@ public class Today extends Activity {
             super.onProgressUpdate(values);
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             setContentView(R.layout.activity_today);
-
+            RelativeLayout layout = (RelativeLayout) findViewById(R.id.relLayoutToday);
+            layout.setBackground(imageBackground);
             todayAppointment = (ListView) findViewById(R.id.today_AppointmentList);
             todayListee = (ListView) findViewById(R.id.today_listeeList);
             Context local = getApplicationContext();
@@ -100,9 +134,6 @@ public class Today extends Activity {
             ArrayAdapter<Listee> myAdapter2 = getListeeArrayAdapter(local);
             todayListee.addHeaderView(headerView2);
             todayListee.setAdapter(myAdapter2);
-
-            fn_createSuccessDialog("Successful retrieval!");
-
         }
 
         private ArrayAdapter<Appointment> getAppointmentArrayAdapter(final Context local) {

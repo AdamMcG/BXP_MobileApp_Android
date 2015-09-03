@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,16 +18,24 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.allnone.app.Controllers.CampaignController;
 import com.allnone.app.Models.CampaignItem;
+import com.allnone.app.Models.Setting;
 import com.allnone.app.allnone.R;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class Contacts extends Activity {
     static String strContactField;
     EditText strContact;
     ListView ContactView;
+    Drawable imageBackground = null;
     CampaignController myController = new CampaignController();
     Context local = null;
     String searchterm = null;
@@ -31,6 +43,8 @@ public class Contacts extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
+        backgrounfunctionality funct = new backgrounfunctionality();
+        funct.execute();
         ContactView = (ListView) findViewById(R.id.contactListView);
         local = this;
         strContact = (EditText) this.findViewById(R.id.editText_contact);
@@ -95,6 +109,43 @@ public class Contacts extends Activity {
         int id = item.getItemId();
         return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
+
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
+    }
+
+    private class backgrounfunctionality extends AsyncTask<String, String, String>
+    {
+        @Override
+        protected String doInBackground(String... params) {
+            Setting mysetting = new Setting();
+            try {
+                imageBackground = drawableFromUrl(mysetting.getStrInterface_Image_Background());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return "success";
+        }
+
+        @Override
+        protected void onPostExecute(String s)
+        {
+            super.onPostExecute(s);
+            RelativeLayout mylayout = (RelativeLayout) findViewById(R.id.relLayoutContact);
+            mylayout.setBackground(imageBackground);
+        }
+    }
+
+
+
+
 
     private class contactRetrievalFunctionality extends AsyncTask<String, String, String> {
         @Override

@@ -6,6 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -15,13 +19,19 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import com.allnone.app.Models.Login;
+import com.allnone.app.Models.Setting;
 import com.allnone.app.allnone.R;
 import com.allnone.app.data.RssItem;
 import com.allnone.app.listeners.ListListener;
 import com.allnone.app.util.RssReader;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 public class RssActivity extends Activity {
@@ -33,6 +43,11 @@ public class RssActivity extends Activity {
         setContentView(R.layout.activity_rss);
         local = this;
         retrievalCache = this.getSharedPreferences("com.allnone.app", Context.MODE_PRIVATE);
+        Setting mySetting = new Setting();
+        mySetting.setStrInterface_Image_Background(retrievalCache.getString("LogoURL", "N/W"));
+        mySetting.setStrInterface_Image_Background(retrievalCache.getString("BackgroundImage", "N/W"));
+        backgrounfunctionality funct = new backgrounfunctionality();
+        funct.execute();
         GetRSSDataTask task;
         boolean check = fn_checkConnectivity();
         if (!check) {
@@ -81,12 +96,53 @@ public class RssActivity extends Activity {
 
     }
 
+
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
+    }
+
+    private class backgrounfunctionality extends AsyncTask<String, String, String> {
+        private Drawable imageBackground = null;
+
+        @Override
+        protected String doInBackground(String... params) {
+            Setting mysetting = new Setting();
+            try {
+                imageBackground = drawableFromUrl(mysetting.getStrInterface_Image_Background());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return "success";
+        }
+
+        @Override
+        protected void onPostExecute(String s)
+        {
+            super.onPostExecute(s);
+            RelativeLayout mylayout = (RelativeLayout) findViewById(R.id.relLayoutRss);
+            mylayout.setBackground(imageBackground);
+        }
+    }
+
+
+
+
     public void toLogin(View view) {
-        Intent intent = new Intent(this, HomePage.class);
+        Intent intent = new Intent(this, LoginPage.class);
+
         String check = retrievalCache.getString("strClient_SessionField", "N/A");
         int idCheck = retrievalCache.getInt("intClientId", 0);
+
         if (check.equals("N/A")) {
-            intent = new Intent(this, LoginPage.class);
+
         } else {
             Login.getInstance().setStrUrlUsed(retrievalCache.getString("URL", "N/W"));
             Login.getInstance().setStrClient_SessionField(check);
@@ -94,6 +150,7 @@ public class RssActivity extends Activity {
             Login.getInstance().setStrUserName(retrievalCache.getString("userName", "N/W"));
             Login.getInstance().setStrSystemUsed(retrievalCache.getString("system", "N/W"));
             Login.getInstance().setStrFunction(retrievalCache.getString("system", "N/W"));
+            intent = new Intent(this, HomePage.class);
             intent.putExtra("Hi", Login.getInstance().getStrUserName() + "!");
         }
         startActivity(intent);

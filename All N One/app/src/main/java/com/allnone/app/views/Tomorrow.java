@@ -5,6 +5,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,20 +17,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.allnone.app.Controllers.DiaryController;
 import com.allnone.app.Controllers.ListerController;
 import com.allnone.app.Models.Appointment;
 import com.allnone.app.Models.Listee;
+import com.allnone.app.Models.Setting;
 import com.allnone.app.Models.diary;
 import com.allnone.app.allnone.R;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.ParseException;
 
 
 public class Tomorrow extends Activity {
     ListView tomorrowAppointment;
+    Drawable imageBackground = null;
     ListView tomorrowListee;
     diary tomorrowDiary;
     ListerController myController;
@@ -58,6 +69,16 @@ public class Tomorrow extends Activity {
 
     }
 
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
+    }
     private class diaryFunctionality extends AsyncTask<String, String, String> {
 
         @Override
@@ -68,6 +89,8 @@ public class Tomorrow extends Activity {
         @Override
         protected String doInBackground(String... params) {
             try {
+                Setting mysetting = new Setting();
+                imageBackground = drawableFromUrl(mysetting.getStrInterface_Image_Background());
                 myController = new ListerController();
                 myController.fn_ListerPOSTRestCall("list_listee_due", "tomorrow");
                 DiaryController fillingDiary = new DiaryController();
@@ -75,6 +98,8 @@ public class Tomorrow extends Activity {
                 fillingDiary.fn_diaryRestCallPost(diaryFunction);
                 tomorrowDiary = fillingDiary.getMyDiary();
             } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 
@@ -90,6 +115,8 @@ public class Tomorrow extends Activity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             setContentView(R.layout.activity_tomorrow);
+            RelativeLayout layouts = (RelativeLayout) findViewById(R.id.relLayoutTomorrow);
+            layouts.setBackground(imageBackground);
             tomorrowAppointment = (ListView) findViewById(R.id.tomorrow_AppointmentList);
             tomorrowListee = (ListView) findViewById(R.id.tomorrow_listeeList);
             Context local = getApplicationContext();
@@ -97,7 +124,6 @@ public class Tomorrow extends Activity {
             tomorrowAppointment.setAdapter(myAdapter);
             ArrayAdapter<Listee> myAdapter2 = getListeeArrayAdapter(local);
             tomorrowListee.setAdapter(myAdapter2);
-            fn_createSuccessDialog("Successful retrieval!");
 
         }
 

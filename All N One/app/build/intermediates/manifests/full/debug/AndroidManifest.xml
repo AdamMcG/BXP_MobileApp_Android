@@ -22,7 +22,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="All N One"
-        android:theme="@style/AppTheme" >
+        android:theme="@android:style/Theme.DeviceDefault" >
         <activity
             android:name="com.allnone.app.views.RssActivity"
             android:label="All N One" >

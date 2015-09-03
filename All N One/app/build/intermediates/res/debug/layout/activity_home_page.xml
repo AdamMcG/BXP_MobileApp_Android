@@ -5,9 +5,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:id="@+id/RelLayoutHome"
     tools:context="com.allnone.HomePage">
 
 <LinearLayout
+    android:id="@+id/LinearLayoutHome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -19,8 +21,7 @@
          android:id="@+id/textView10"
          android:layout_width="69dp"
          android:layout_height="wrap_content"
-         android:layout_alignLeft="@+id/button_todo"
-         android:layout_alignParentTop="true"
+
          android:layout_marginLeft="10dp"
          android:text="Hi,"
          android:textAppearance="?android:attr/textAppearanceLarge"
@@ -30,14 +31,13 @@
          android:id="@+id/TVusername"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:layout_alignParentTop="true"
-         android:layout_toRightOf="@+id/textView10"
          android:layout_weight="0.3"
          android:gravity="left"
          android:text="@string/emptyString"
          android:textAppearance="?android:attr/textAppearanceLarge"
          android:textSize="80px"
          android:textStyle="italic" />
+
      <Button
          android:id="@+id/logout"
          android:layout_width="match_parent"
@@ -61,8 +61,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:orientation="vertical">
+        android:layout_weight="0.9"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
 
         <Button
             android:id="@+id/button_todo"
@@ -71,9 +72,10 @@
         android:layout_above="@+id/button_today"
         android:layout_toLeftOf="@+id/button_tomorrow"
             android:layout_toStartOf="@+id/button_tomorrow"
-            android:layout_weight="0.5"
+            android:layout_weight="0.9"
             android:onClick="loadToDo"
-            android:text="To Do" />
+            android:text="To Do"
+            android:layout_margin="5dp" />
 
 
     <Button
@@ -83,9 +85,10 @@
         android:layout_above="@+id/button_contacts"
         android:layout_toLeftOf="@+id/button_tomorrow"
         android:layout_toStartOf="@+id/button_tomorrow"
-        android:layout_weight="0.5"
+        android:layout_weight="0.9"
         android:onClick="loadToday"
-        android:text="Today" />
+        android:text="Today"
+        android:layout_margin="5dp" />
 
 
     <Button
@@ -95,9 +98,10 @@
         android:layout_alignEnd="@+id/button_today"
         android:layout_alignRight="@+id/button_today"
         android:layout_centerVertical="true"
-        android:layout_weight="0.5"
+        android:layout_weight="0.9"
         android:onClick="loadContacts"
-        android:text="Contacts" />
+        android:text="Contacts"
+        android:layout_margin="5dp" />
 
     <Button
         android:id="@+id/button_web"
@@ -106,10 +110,11 @@
         android:layout_alignEnd="@+id/button_contacts"
         android:layout_alignRight="@+id/button_contacts"
         android:layout_below="@+id/button_contacts"
-        android:layout_weight="0.5"
+        android:layout_weight="0.9"
         android:onClick="loadWebsite"
         android:text="Website"
-        android:textColor="#f3ff3e" />
+        android:textColor="#f3ff3e"
+        android:layout_margin="5dp" />
 
 
 
@@ -120,17 +125,19 @@
         android:layout_alignEnd="@+id/button_web"
         android:layout_alignRight="@+id/button_web"
         android:layout_below="@+id/button_web"
-        android:layout_weight="0.5"
+        android:layout_weight="0.9"
         android:onClick="loadSystem"
         android:text="System"
-        android:textColor="#f3ff3e" />
+        android:textColor="#f3ff3e"
+        android:layout_margin="5dp" />
 
 
 </LinearLayout>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="0.5"
+    android:layout_weight="0.9"
+    android:layout_margin="10dp"
     android:orientation="vertical">
     <Button
         android:id="@+id/button_ticket"
@@ -141,9 +148,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignStart="@+id/button_tomorrow"
-        android:layout_weight="0.5"
+        android:layout_weight="0.9"
         android:onClick="loadTicket"
-        android:text="Ticket" />
+        android:text="Ticket"
+        android:layout_margin="5dp" />
 
     <Button
         android:id="@+id/button_tomorrow"
@@ -152,9 +160,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/button_todo"
-        android:layout_weight="0.5"
+        android:layout_weight="0.9"
         android:onClick="loadTomorrow"
-        android:text="Tomorrow" />
+        android:text="Tomorrow"
+        android:layout_margin="5dp" />
 
     <Button
         android:id="@+id/button_critical"
@@ -163,9 +172,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/button_tomorrow"
-        android:layout_weight="0.5"
+        android:layout_weight="0.9"
         android:onClick="loadCritical"
-        android:text="Critical" />
+        android:text="Critical"
+        android:layout_margin="5dp" />
 
     <Button
         android:id="@+id/button_wixi"
@@ -174,10 +184,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/button_critical"
-        android:layout_weight="0.5"
+        android:layout_weight="0.9"
         android:onClick="loadWixi"
         android:text="Wixi"
-        android:textColor="#f3ff3e" />
+        android:textColor="#f3ff3e"
+        android:layout_margin="5dp" />
 
     <Button
         android:id="@+id/button_settings"
@@ -185,9 +196,10 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/button_system"
         android:layout_toRightOf="@+id/button_system"
-        android:layout_weight="0.5"
+        android:layout_weight="0.9"
         android:onClick="loadCSettings"
-        android:text="Settings" />
+        android:text="Settings"
+        android:layout_margin="5dp" />
 </LinearLayout>
 </LinearLayout>
 </LinearLayout>

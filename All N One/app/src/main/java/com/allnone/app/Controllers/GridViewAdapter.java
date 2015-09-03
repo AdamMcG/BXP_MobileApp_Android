@@ -2,6 +2,7 @@ package com.allnone.app.Controllers;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,6 +77,7 @@ public class GridViewAdapter extends BaseAdapter
         if (items.get(position).getName().equals("green") || items.get(position).getName().equals("jade")
                 || items.get(position).getName().equals("emerald") || items.get(position).getName().equals("apple")
                 || items.get(position).getName().equals("help")) {
+            Drawable myDraw = tview1.getBackground();
            tview1.setBackgroundColor(Color.parseColor("#328332"));
             tview2.setBackgroundColor(Color.parseColor("#328332"));
         } else if (items.get(position).getName().equals("white") || items.get(position).getName().equals("olive") ||

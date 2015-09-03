@@ -210,8 +210,8 @@ public class SettingController {
             mySetting.setStrInterface_RSSFeed(text);
         else if (parser.getName().equals("strInterface_StoreSystemAndUsername"))
             mySetting.setBoolInterface_StoreUsername(Boolean.parseBoolean(text));
-        else if (parser.getName().equals("strInterface_Image_Logo"))
-            mySetting.setStrInterface_Image_LogoURL(text);
+        else if (parser.getName().equals("strInterface_Image_LogoURL"))
+             mySetting.setStrInterface_Image_LogoURL(text);
         else if (parser.getName().equals("strInterface_Image_Background"))
             mySetting.setStrInterface_Image_Background(text);
         else if (parser.getName().equals("strInterface_FontColours"))

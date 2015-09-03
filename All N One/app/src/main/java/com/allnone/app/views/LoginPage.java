@@ -6,16 +6,24 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.allnone.app.Controllers.HttpRequest;
 import com.allnone.app.Controllers.SettingController;
 import com.allnone.app.Models.Login;
+import com.allnone.app.Models.Setting;
 import com.allnone.app.allnone.R;
 
 import org.apache.http.NameValuePair;
@@ -25,7 +33,10 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +46,7 @@ import static org.xmlpull.v1.XmlPullParser.TEXT;
 public class LoginPage extends Activity {
     static String strStaticSystem;
     static String strStaticUsername;
+    SharedPreferences myCache;
     SettingController myController = new SettingController();
     EditText strSystem;
     EditText a;
@@ -42,6 +54,7 @@ public class LoginPage extends Activity {
     HttpRequest myClient = new HttpRequest();
     Login myLogin;
     Intent i;
+
     private LoginPage local;
 
     public String getStrSystem() {
@@ -58,18 +71,57 @@ public class LoginPage extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences myCache = this.getSharedPreferences("com.allnone.app", Context.MODE_PRIVATE);
-        myCache.edit().clear();
+        myCache = this.getSharedPreferences("com.allnone.app", Context.MODE_PRIVATE);
         local = this;
         setContentView(R.layout.activity_login_page);
         strSystem = (EditText) findViewById(R.id.TFsystem);
-
+            backgrounfunctionality funct = new backgrounfunctionality();
+            funct.execute();
         a = (EditText) findViewById(R.id.TFusername);
         strPassword = (EditText) findViewById(R.id.TFpassword);
         if (strStaticSystem != null) {
             strSystem.setText(strStaticSystem);
             a.setText(strStaticUsername);
         }
+    }
+
+    private class backgrounfunctionality extends AsyncTask<String, String, String> {
+        ImageView view;
+        Drawable background = null;
+        Drawable LogoImage = null;
+        @Override
+        protected String doInBackground(String... params) {
+            Setting mysetting = new Setting();
+            try {
+                background = drawableFromUrl(mysetting.getStrInterface_Image_Background());
+                LogoImage= drawableFromUrl(mysetting.getStrInterface_Image_LogoURL());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return "success";
+        }
+
+
+        @Override
+        protected void onPostExecute(String s)
+        {
+            super.onPostExecute(s);
+            view = (ImageView) findViewById(R.id.imageView);
+            view.setBackground(LogoImage);
+            RelativeLayout mylayout = (RelativeLayout) findViewById(R.id.relLayoutLogin);
+            mylayout.setBackground(background);
+        }
+    }
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
     }
 
     public List<NameValuePair> fn_FillParameters() {
@@ -203,11 +255,12 @@ public class LoginPage extends Activity {
             myClient.fn_BxpApi_PostCall(strRestFunctionURL, myClient.fnStrSettingParameters(fn_FillParameters()));
             try {
                 fn_ParsingThroughXMLDocument(fn_createLoginParser(myClient.fnStrGetResponseFromCall()));
+                myController.fn_SettingsPostCall(Login.getInstance().getStrUrlUsed());
+                myController.fn_ButtonsPostCall(Login.getInstance().getStrUrlUsed(), 10);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            myController.fn_SettingsPostCall(strRestFunctionURL);
-            myController.fn_ButtonsPostCall(strRestFunctionURL, 10);
+
             return "success";
         }
 

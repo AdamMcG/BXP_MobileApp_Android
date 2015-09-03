@@ -23,7 +23,7 @@ public class Setting {
     private static String strInterface_FontColours;
     private static String strInterface_FontSizes;
     private static String strInterface_FontFaces;
-    public List<Buttons> myListOfButtons = new ArrayList<Buttons>();
+    public static List<Buttons> myListOfButtons = new ArrayList<Buttons>();
     private String strInterface_SystemKeywords;
 
     //region Accessor Methods

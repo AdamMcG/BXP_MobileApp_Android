@@ -1,13 +1,20 @@
 package com.allnone.app.views;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 
 import com.allnone.app.Controllers.HttpRequest;
 import com.allnone.app.Models.Login;
@@ -21,7 +28,10 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,12 +41,16 @@ import static org.xmlpull.v1.XmlPullParser.TEXT;
 
 
 public class Settings extends Activity {
-    private Setting mySetting;
+    private Setting mySetting = new Setting();
     private Context local;
+    Drawable imageBackground = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
         local = this;
+        backgrounfunctionality funct = new backgrounfunctionality();
+        funct.execute();
         settingsFunctionality myFunctionality = new settingsFunctionality();
         myFunctionality.execute();
     }
@@ -152,6 +166,38 @@ public class Settings extends Activity {
         noNetwork.show();
     }
 
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
+    }
+
+    private class backgrounfunctionality extends AsyncTask<String, String, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                imageBackground = drawableFromUrl(mySetting.getStrInterface_Image_Background());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return "success";
+        }
+
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+        @Override
+        protected void onPostExecute(String s)
+        {
+            super.onPostExecute(s);
+            RelativeLayout mylayout = (RelativeLayout) findViewById(R.id.relLayoutSettings);
+            mylayout.setBackground(imageBackground);
+        }
+    }
+
     private class settingsFunctionality extends AsyncTask<String, String, String> {
 
         protected void onPreExecute() {
@@ -198,12 +244,6 @@ public class Settings extends Activity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            setContentView(R.layout.activity_settings);
-            if (s.equals("success")) {
-                fn_createSuccessDialog("Success!");
-            } else {
-                fn_createErrorDialog();
-            }
         }
     }
 }
