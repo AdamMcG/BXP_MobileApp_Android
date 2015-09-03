@@ -7,8 +7,10 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -20,7 +22,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -46,10 +47,26 @@ public class Today extends Activity {
     ListerController myController;
     Context local;
     Drawable imageBackground = null;
+    private SharedPreferences mycach;
+    private String[] styles;
+
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mycach = this.getSharedPreferences("com.allnone.app", MODE_PRIVATE);
+        styles = mycach.getString("StoringButtonStyling", "N/A").split(",");
+        setContentView(R.layout.activity_today);
         local = this;
         diaryFunctionality dFunct = new diaryFunctionality();
         dFunct.execute();
@@ -72,17 +89,6 @@ public class Today extends Activity {
         int id = item.getItemId();
 
         return id == R.id.action_settings || super.onOptionsItemSelected(item);
-
-    }
-
-    public static Drawable drawableFromUrl(String url) throws IOException {
-        Bitmap x;
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.connect();
-        InputStream input;
-        input = connection.getInputStream();
-        x = BitmapFactory.decodeStream(input);
-        return new BitmapDrawable(x);
 
     }
 
@@ -122,7 +128,6 @@ public class Today extends Activity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            setContentView(R.layout.activity_today);
             RelativeLayout layout = (RelativeLayout) findViewById(R.id.relLayoutToday);
             layout.setBackground(imageBackground);
             todayAppointment = (ListView) findViewById(R.id.today_AppointmentList);
@@ -130,10 +135,18 @@ public class Today extends Activity {
             Context local = getApplicationContext();
             ArrayAdapter<Appointment> myAdapter = getAppointmentArrayAdapter(local);
             todayAppointment.setAdapter(myAdapter);
-            View headerView2 = getLayoutInflater().inflate(R.layout.headerforlist, null);
             ArrayAdapter<Listee> myAdapter2 = getListeeArrayAdapter(local);
-            todayListee.addHeaderView(headerView2);
             todayListee.setAdapter(myAdapter2);
+            View headerView = getLayoutInflater().inflate(R.layout.headerforlist, null);
+            TextView text = (TextView) headerView.findViewById(R.id.headerView);
+            text.setText("Lister");
+            text.setTextColor(Color.parseColor(styles[1]));
+            todayListee.addHeaderView(headerView);
+            headerView = getLayoutInflater().inflate(R.layout.headerforlist, null);
+            text = (TextView) headerView.findViewById(R.id.headerView);
+            text.setText("Diary");
+            text.setTextColor(Color.parseColor(styles[1]));
+            todayAppointment.addHeaderView(headerView);
         }
 
         private ArrayAdapter<Appointment> getAppointmentArrayAdapter(final Context local) {
@@ -142,8 +155,9 @@ public class Today extends Activity {
                 public View getView(int position, View convertView, ViewGroup parent) {
                     View view = super.getView(position, convertView, parent);
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                    text1.setTextColor(Color.parseColor(styles[1]));
                     TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-
+                    text2.setTextColor(Color.parseColor(styles[1]));
                     text1.setText(todayDiary.colAppointment.get(position).returnDateStartString());
                     text2.setText(todayDiary.colAppointment.get(position).toString());
                     return view;
@@ -157,8 +171,9 @@ public class Today extends Activity {
                 public View getView(int position, View convertView, ViewGroup parent) {
                     View view = super.getView(position, convertView, parent);
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                    text1.setTextColor(Color.parseColor(styles[1]));
                     TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-
+                    text2.setTextColor(Color.parseColor(styles[1]));
                     text1.setText(myController.getLister().getListees().get(position).strLister_Title);
                     text2.setText("22332");
                     return view;

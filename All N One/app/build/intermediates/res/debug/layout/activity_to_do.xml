@@ -12,16 +12,6 @@
        android:layout_height="wrap_content"
        android:orientation="vertical">
 
-       <TextView
-           android:id="@+id/textView3"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_alignParentLeft="true"
-           android:layout_alignParentTop="true"
-           android:text="To Do"
-           android:textAppearance="?android:attr/textAppearanceLarge" />
-
-
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -52,7 +42,6 @@
            android:id="@+id/ListOfToDoListees"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:background="#000000"
            tools:listitem="@android:layout/simple_list_item_1" />
 </LinearLayout>
 

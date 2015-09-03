@@ -12,16 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="20dp"
-            android:text="Contacts"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
@@ -46,7 +36,6 @@
         <ListView
             android:id="@+id/contactListView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#000000" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </RelativeLayout><!-- From: file:/Users/testing/Desktop/AndroidStudioProjects/All%20N%20One/app/src/main/res/layout/activity_contacts.xml -->

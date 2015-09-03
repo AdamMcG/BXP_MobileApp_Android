@@ -12,7 +12,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,6 +56,17 @@ public class LoginPage extends Activity {
 
     private LoginPage local;
 
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
+    }
+
     public String getStrSystem() {
         return "client_" + strSystem.getText().toString();
     }
@@ -83,45 +93,6 @@ public class LoginPage extends Activity {
             strSystem.setText(strStaticSystem);
             a.setText(strStaticUsername);
         }
-    }
-
-    private class backgrounfunctionality extends AsyncTask<String, String, String> {
-        ImageView view;
-        Drawable background = null;
-        Drawable LogoImage = null;
-        @Override
-        protected String doInBackground(String... params) {
-            Setting mysetting = new Setting();
-            try {
-                background = drawableFromUrl(mysetting.getStrInterface_Image_Background());
-                LogoImage= drawableFromUrl(mysetting.getStrInterface_Image_LogoURL());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return "success";
-        }
-
-
-        @Override
-        protected void onPostExecute(String s)
-        {
-            super.onPostExecute(s);
-            view = (ImageView) findViewById(R.id.imageView);
-            view.setBackground(LogoImage);
-            RelativeLayout mylayout = (RelativeLayout) findViewById(R.id.relLayoutLogin);
-            mylayout.setBackground(background);
-        }
-    }
-    public static Drawable drawableFromUrl(String url) throws IOException {
-        Bitmap x;
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.connect();
-        InputStream input;
-        input = connection.getInputStream();
-        x = BitmapFactory.decodeStream(input);
-        return new BitmapDrawable(x);
-
     }
 
     public List<NameValuePair> fn_FillParameters() {
@@ -240,6 +211,35 @@ public class LoginPage extends Activity {
         noNetwork.show();
     }
 
+    private class backgrounfunctionality extends AsyncTask<String, String, String> {
+        ImageView view;
+        Drawable background = null;
+        Drawable LogoImage = null;
+
+        @Override
+        protected String doInBackground(String... params) {
+            Setting mysetting = new Setting();
+            try {
+                background = drawableFromUrl(mysetting.getStrInterface_Image_Background());
+                LogoImage = drawableFromUrl(mysetting.getStrInterface_Image_LogoURL());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return "success";
+        }
+
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            view = (ImageView) findViewById(R.id.imageView);
+            view.setBackground(LogoImage);
+            RelativeLayout mylayout = (RelativeLayout) findViewById(R.id.relLayoutLogin);
+            mylayout.setBackground(background);
+        }
+    }
+
     private class LoginFunctionality extends AsyncTask<String, String, String> {
 
         @Override
@@ -255,8 +255,10 @@ public class LoginPage extends Activity {
             myClient.fn_BxpApi_PostCall(strRestFunctionURL, myClient.fnStrSettingParameters(fn_FillParameters()));
             try {
                 fn_ParsingThroughXMLDocument(fn_createLoginParser(myClient.fnStrGetResponseFromCall()));
-                myController.fn_SettingsPostCall(Login.getInstance().getStrUrlUsed());
-                myController.fn_ButtonsPostCall(Login.getInstance().getStrUrlUsed(), 10);
+                if (Login.getInstance().getIntClientid() != 0) {
+                    myController.fn_SettingsPostCall(Login.getInstance().getStrUrlUsed());
+                    myController.fn_ButtonsPostCall(Login.getInstance().getStrUrlUsed(), 10);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

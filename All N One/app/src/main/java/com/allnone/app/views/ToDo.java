@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -38,10 +40,26 @@ public class ToDo extends Activity {
     Drawable imageBackground = null;
     ListerController myController = new ListerController();
     String listeeString = null;
+    SharedPreferences mycach;
+    String[] styles;
+
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do);
+        mycach = this.getSharedPreferences("com.allnone.app", MODE_PRIVATE);
+        styles = mycach.getString("StoringButtonStyling", "N/A").split(",");
         backgrounfunctionality funct = new backgrounfunctionality();
         funct.execute();
         myListView = (ListView) findViewById(R.id.ListOfToDoListees);
@@ -119,6 +137,7 @@ public class ToDo extends Activity {
             ArrayAdapter<Listee> myAdapter = getListeeArrayAdapter(local);
             View headerView = getLayoutInflater().inflate(R.layout.headerforlist, null);
             TextView text = (TextView) headerView.findViewById(R.id.headerView);
+            text.setTextColor(Color.parseColor(styles[1]));
             text.setText("ToDo List");
             myListView.addHeaderView(headerView);
             myListView.setAdapter(myAdapter);
@@ -130,25 +149,15 @@ public class ToDo extends Activity {
                 public View getView(int position, View convertView, ViewGroup parent) {
                     View view = super.getView(position, convertView, parent);
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                    text1.setTextColor(Color.parseColor(styles[1]));
                     TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-
+                    text2.setTextColor(Color.parseColor(styles[1]));
                     text1.setText(myController.getLister().getListees().get(position).strLister_Title);
                     text2.setText(myController.getLister().getListees().get(position).strLister_FromDate);
                     return view;
                 }
             };
         }
-    }
-
-    public static Drawable drawableFromUrl(String url) throws IOException {
-        Bitmap x;
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.connect();
-        InputStream input;
-        input = connection.getInputStream();
-        x = BitmapFactory.decodeStream(input);
-        return new BitmapDrawable(x);
-
     }
 
     private class backgrounfunctionality extends AsyncTask<String, String, String> {

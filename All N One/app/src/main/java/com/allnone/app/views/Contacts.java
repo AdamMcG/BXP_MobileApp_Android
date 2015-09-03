@@ -4,8 +4,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -39,6 +43,18 @@ public class Contacts extends Activity {
     CampaignController myController = new CampaignController();
     Context local = null;
     String searchterm = null;
+
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +67,13 @@ public class Contacts extends Activity {
         if (strContact != null) {
             strContact.setText(strContactField);
         }
+        SharedPreferences mycach = local.getSharedPreferences("com.allnone.app", MODE_PRIVATE);
+        String[] styles = mycach.getString("StoringButtonStyling", "N/A").split(",");
         Button contactButton = (Button) this.findViewById(R.id.button_searchcontact);
+        Drawable d = contactButton.getBackground();
+        PorterDuffColorFilter filter = new PorterDuffColorFilter(Color.parseColor(styles[0]), PorterDuff.Mode.SRC_ATOP);
+        d.setColorFilter(filter);
+        contactButton.setTextColor(Color.parseColor(styles[1]));
         contactButtonClickListener(contactButton);
 
     }
@@ -73,9 +95,13 @@ public class Contacts extends Activity {
         return new ArrayAdapter<CampaignItem>(local, android.R.layout.simple_list_item_2, android.R.id.text1, myController.getMyCampaign().getListOfCampaigns()) {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
+                SharedPreferences mycach = local.getSharedPreferences("com.allnone.app", MODE_PRIVATE);
+                String[] styles = mycach.getString("StoringButtonStyling", "N/A").split(",");
                 View view = super.getView(position, convertView, parent);
                 TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                text1.setTextColor(Color.parseColor(styles[1]));
                 TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+                text2.setTextColor(Color.parseColor(styles[1]));
                 String strPhone = myController.getMyCampaign().getListOfCampaigns().get(position).itemsOfCampaign.get(2);
                 String strEmail = myController.getMyCampaign().getListOfCampaigns().get(position).itemsOfCampaign.get(3);
                 if (myController.getMyCampaign().getListOfCampaigns().get(position).itemsOfCampaign.get(3) == null)
@@ -108,17 +134,6 @@ public class Contacts extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         return id == R.id.action_settings || super.onOptionsItemSelected(item);
-    }
-
-    public static Drawable drawableFromUrl(String url) throws IOException {
-        Bitmap x;
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.connect();
-        InputStream input;
-        input = connection.getInputStream();
-        x = BitmapFactory.decodeStream(input);
-        return new BitmapDrawable(x);
-
     }
 
     private class backgrounfunctionality extends AsyncTask<String, String, String>
@@ -176,6 +191,12 @@ public class Contacts extends Activity {
             Context local2 = getApplicationContext();
             ArrayAdapter<CampaignItem> myAdapter = GetCampaignItems(local2);
             ContactView.setAdapter(myAdapter);
+            View headerView = getLayoutInflater().inflate(R.layout.headerforlist, null);
+            TextView text = (TextView) headerView.findViewById(R.id.headerView);
+            text.setTextColor(Color.parseColor("#000000"));
+            text.setText("Contacts");
+            if (ContactView.getHeaderViewsCount() == 0)
+                ContactView.addHeaderView(headerView);
             fn_createSuccessDialog("Successful retrieval!");
 
         }

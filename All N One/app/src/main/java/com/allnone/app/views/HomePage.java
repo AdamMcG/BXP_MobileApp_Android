@@ -1,6 +1,5 @@
 package com.allnone.app.views;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,18 +10,14 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.PaintDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -30,8 +25,6 @@ import com.allnone.app.Controllers.SettingController;
 import com.allnone.app.Models.Login;
 import com.allnone.app.Models.Setting;
 import com.allnone.app.allnone.R;
-
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,21 +35,11 @@ import static com.allnone.app.allnone.R.layout.activity_home_page;
 
 
 public class HomePage extends Activity {
-    String[] styles;
     public Setting mysetting = new Setting();
+    String[] styles;
+    Drawable imageBackground = null;
     private Intent diaryIntent;
     private SharedPreferences myCaches;
-    Drawable imageBackground = null;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        myCaches = this.getSharedPreferences("com.allnone.app", Context.MODE_PRIVATE);
-        fnStoreCache();
-       backgrounfunctionality funct = new backgrounfunctionality();
-        funct.execute();
-
-    }
-
 
     public static Drawable drawableFromUrl(String url) throws IOException {
         Bitmap x;
@@ -69,38 +52,18 @@ public class HomePage extends Activity {
 
     }
 
-
-private class backgrounfunctionality extends AsyncTask<String, String, String>
-{
-    SettingController myController = new SettingController();
     @Override
-    protected String doInBackground(String... params) {
-        try {
-            imageBackground = drawableFromUrl(mysetting.getStrInterface_Image_Background());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "success";
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        myCaches = this.getSharedPreferences("com.allnone.app", Context.MODE_PRIVATE);
+        fnStoreCache();
+       backgrounfunctionality funct = new backgrounfunctionality();
+        funct.execute();
+
     }
 
-    @Override
-    protected void onPostExecute(String s)
-    {
-        super.onPostExecute(s);
-        setContentView(activity_home_page);
-        RelativeLayout mylayout = (RelativeLayout) findViewById(R.id.RelLayoutHome);
-        mylayout.setBackground(imageBackground);
-        styles = myCaches.getString("StoringButtonStyling", "N/A").split(",");
-        fnSettingbuttonColour(styles[0],styles[1]);
-        String username = getIntent().getStringExtra("Hi");
-        TextView tv = (TextView) findViewById(R.id.TVusername);
-        tv.setText(username);
-
-    }
-}
-
-    private void fnSettingbuttonColour(String style,String style2) {
-        PorterDuffColorFilter filter = new PorterDuffColorFilter(Color.parseColor(style),PorterDuff.Mode.SRC_ATOP);
+    private void fnSettingbuttonColour(String style, String style2) {
+        PorterDuffColorFilter filter = new PorterDuffColorFilter(Color.parseColor(style), PorterDuff.Mode.SRC_ATOP);
         TextView myText = (TextView) findViewById(R.id.textView10);
         myText.setTextColor(Color.parseColor(style2));
         TextView myText2 = (TextView) findViewById(R.id.TVusername);
@@ -170,7 +133,6 @@ private class backgrounfunctionality extends AsyncTask<String, String, String>
         Login myLogin = Login.getInstance();
         if(Setting.myListOfButtons.size() !=0)
         myCaches.edit().putString("StoringButtonStyling", Setting.myListOfButtons.get(0).getStrInterface_Button_Styling()).apply();
-
         myCaches.edit().putString("Logo", mysetting.getStrInterface_Image_LogoURL()).apply();
         myCaches.edit().putString("BackgroundImage", mysetting.getStrInterface_Image_Background()).apply();
         myCaches.edit().putString("URL", myLogin.getStrUrlUsed()).apply();
@@ -255,6 +217,35 @@ private class backgrounfunctionality extends AsyncTask<String, String, String>
         Uri uri = Uri.parse("https://ww3.allnone.ie/client/client_allnone/main/main.asp");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
+    }
+
+    private class backgrounfunctionality extends AsyncTask<String, String, String> {
+        SettingController myController = new SettingController();
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                imageBackground = drawableFromUrl(mysetting.getStrInterface_Image_Background());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return "success";
+    }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            setContentView(activity_home_page);
+
+            RelativeLayout mylayout = (RelativeLayout) findViewById(R.id.RelLayoutHome);
+            mylayout.setBackground(imageBackground);
+            styles = myCaches.getString("StoringButtonStyling", "N/A").split(",");
+            fnSettingbuttonColour(styles[0], styles[1]);
+            TextView username = (TextView) findViewById(R.id.TVusername);
+            username.setText(myCaches.getString("userName", "N/A"));
+
+
+        }
     }
 
 

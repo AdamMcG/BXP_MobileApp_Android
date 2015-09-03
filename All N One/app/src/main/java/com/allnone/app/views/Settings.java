@@ -5,8 +5,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -14,6 +18,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.allnone.app.Controllers.HttpRequest;
@@ -41,9 +46,21 @@ import static org.xmlpull.v1.XmlPullParser.TEXT;
 
 
 public class Settings extends Activity {
+    Drawable imageBackground = null;
     private Setting mySetting = new Setting();
     private Context local;
-    Drawable imageBackground = null;
+
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +70,30 @@ public class Settings extends Activity {
         funct.execute();
         settingsFunctionality myFunctionality = new settingsFunctionality();
         myFunctionality.execute();
+        SharedPreferences myCaches = this.getSharedPreferences("com.allnone.app", Context.MODE_PRIVATE);
+        String[] styles = myCaches.getString("StoringButtonStyling", "N/A").split(",");
+        setupbuttonStyle(styles[0], styles[1]);
+    }
+
+    public void setupbuttonStyle(String style, String style2) {
+        Button myButton = (Button) findViewById(R.id.button_storeset);
+        Drawable buttonDrawable = myButton.getBackground();
+        PorterDuffColorFilter filter = new PorterDuffColorFilter(Color.parseColor(style), PorterDuff.Mode.SRC_ATOP);
+        buttonDrawable.setColorFilter(filter);
+        myButton.setBackground(buttonDrawable);
+        myButton.setTextColor(Color.parseColor(style2));
+
+        myButton = (Button) findViewById(R.id.button_getconfig);
+        buttonDrawable = myButton.getBackground();
+        buttonDrawable.setColorFilter(filter);
+        myButton.setBackground(buttonDrawable);
+        myButton.setTextColor(Color.parseColor(style2));
+
+        myButton = (Button) findViewById(R.id.button_reset);
+        buttonDrawable = myButton.getBackground();
+        buttonDrawable.setColorFilter(filter);
+        myButton.setBackground(buttonDrawable);
+        myButton.setTextColor(Color.parseColor(style2));
     }
 
     @Override
@@ -164,17 +205,6 @@ public class Settings extends Activity {
         });
         noNetwork.create();
         noNetwork.show();
-    }
-
-    public static Drawable drawableFromUrl(String url) throws IOException {
-        Bitmap x;
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.connect();
-        InputStream input;
-        input = connection.getInputStream();
-        x = BitmapFactory.decodeStream(input);
-        return new BitmapDrawable(x);
-
     }
 
     private class backgrounfunctionality extends AsyncTask<String, String, String> {

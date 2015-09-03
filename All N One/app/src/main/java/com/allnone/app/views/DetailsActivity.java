@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.WebView;
-import android.widget.TextView;
 
 import com.allnone.app.allnone.R;
 
@@ -25,10 +24,9 @@ public class DetailsActivity extends Activity {
         Log.d("DEBUG", "summary:\t\t" + content);
 
 
-        TextView titleTV = (TextView) findViewById(R.id.detailsTextView);
         WebView webView = (WebView) findViewById(R.id.detailsWebView);
 
-        titleTV.setText(title);
+
         webView.loadData(content, "application/atom+xml", "UTF-8");
 
     }

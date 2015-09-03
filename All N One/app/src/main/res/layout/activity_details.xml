@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linLayoutDetail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/linLayoutDetail"
     >
-
-    <TextView
-        android:id="@+id/detailsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="[POST TITLE GOES HERE]"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <WebView
         android:id="@+id/detailsWebView"
         android:layout_width="match_parent"

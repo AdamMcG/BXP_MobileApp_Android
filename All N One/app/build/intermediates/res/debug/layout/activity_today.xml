@@ -16,19 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <TextView
-                android:id="@+id/today"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="bottom|left"
-                android:layout_weight="0.5"
-                android:gravity="center_vertical|center_horizontal"
-                android:text="Today"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:theme="@style/AppTheme" />
-
 
             <Button
                 android:id="@+id/button_toToDo2"
@@ -45,15 +32,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            android:layout_weight="0.5"
-            android:background="#4b96e2" />
+            android:layout_weight="0.5" />
         <ListView
             android:id="@+id/today_listeeList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            android:layout_weight="0.5"
-            android:background="#a0e524" />
+            android:layout_weight="0.5" />
 
     </LinearLayout>
 

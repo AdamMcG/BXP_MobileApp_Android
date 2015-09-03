@@ -37,6 +37,18 @@ import java.util.List;
 public class RssActivity extends Activity {
     private RssActivity local;
     private SharedPreferences retrievalCache;
+
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +56,8 @@ public class RssActivity extends Activity {
         local = this;
         retrievalCache = this.getSharedPreferences("com.allnone.app", Context.MODE_PRIVATE);
         Setting mySetting = new Setting();
-        mySetting.setStrInterface_Image_Background(retrievalCache.getString("LogoURL", "N/W"));
+        mySetting.setStrInterface_Image_LogoURL(retrievalCache.getString("Logo", "N/W"));
+        String a = mySetting.getStrInterface_Image_LogoURL();
         mySetting.setStrInterface_Image_Background(retrievalCache.getString("BackgroundImage", "N/W"));
         backgrounfunctionality funct = new backgrounfunctionality();
         funct.execute();
@@ -96,16 +109,25 @@ public class RssActivity extends Activity {
 
     }
 
+    public void toLogin(View view) {
+        Intent intent = new Intent(this, LoginPage.class);
 
-    public static Drawable drawableFromUrl(String url) throws IOException {
-        Bitmap x;
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.connect();
-        InputStream input;
-        input = connection.getInputStream();
-        x = BitmapFactory.decodeStream(input);
-        return new BitmapDrawable(x);
+        String check = retrievalCache.getString("strClient_SessionField", "N/A");
+        int idCheck = retrievalCache.getInt("intClientId", 0);
 
+        if (check.equals("N/A")) {
+            String a = "@@@@@@";
+        } else {
+            Login.getInstance().setStrUrlUsed(retrievalCache.getString("URL", "N/W"));
+            Login.getInstance().setStrClient_SessionField(check);
+            Login.getInstance().setIntClientid(idCheck);
+            Login.getInstance().setStrUserName(retrievalCache.getString("userName", "N/W"));
+            Login.getInstance().setStrSystemUsed(retrievalCache.getString("system", "N/W"));
+            Login.getInstance().setStrFunction(retrievalCache.getString("system", "N/W"));
+            intent = new Intent(this, HomePage.class);
+            intent.putExtra("Hi", Login.getInstance().getStrUserName() + "!");
+        }
+        startActivity(intent);
     }
 
     private class backgrounfunctionality extends AsyncTask<String, String, String> {
@@ -132,29 +154,6 @@ public class RssActivity extends Activity {
         }
     }
 
-
-
-
-    public void toLogin(View view) {
-        Intent intent = new Intent(this, LoginPage.class);
-
-        String check = retrievalCache.getString("strClient_SessionField", "N/A");
-        int idCheck = retrievalCache.getInt("intClientId", 0);
-
-        if (check.equals("N/A")) {
-
-        } else {
-            Login.getInstance().setStrUrlUsed(retrievalCache.getString("URL", "N/W"));
-            Login.getInstance().setStrClient_SessionField(check);
-            Login.getInstance().setIntClientid(idCheck);
-            Login.getInstance().setStrUserName(retrievalCache.getString("userName", "N/W"));
-            Login.getInstance().setStrSystemUsed(retrievalCache.getString("system", "N/W"));
-            Login.getInstance().setStrFunction(retrievalCache.getString("system", "N/W"));
-            intent = new Intent(this, HomePage.class);
-            intent.putExtra("Hi", Login.getInstance().getStrUserName() + "!");
-        }
-        startActivity(intent);
-    }
     private class GetRSSDataTask extends AsyncTask<String, Void, List<RssItem>> {
         @Override
         protected List<RssItem> doInBackground(String... urls) {

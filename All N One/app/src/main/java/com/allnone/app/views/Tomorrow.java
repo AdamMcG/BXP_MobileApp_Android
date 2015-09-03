@@ -5,8 +5,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -42,9 +44,26 @@ public class Tomorrow extends Activity {
     diary tomorrowDiary;
     ListerController myController;
     Context local;
+    private SharedPreferences mycach;
+    private String[] styles;
+
+    public static Drawable drawableFromUrl(String url) throws IOException {
+        Bitmap x;
+        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        connection.connect();
+        InputStream input;
+        input = connection.getInputStream();
+        x = BitmapFactory.decodeStream(input);
+        return new BitmapDrawable(x);
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mycach = this.getSharedPreferences("com.allnone.app", MODE_PRIVATE);
+        styles = mycach.getString("StoringButtonStyling", "N/A").split(",");
+        setContentView(R.layout.activity_tomorrow);
         local = this;
         diaryFunctionality tomorrowFunctionality = new diaryFunctionality();
         tomorrowFunctionality.execute();
@@ -69,16 +88,6 @@ public class Tomorrow extends Activity {
 
     }
 
-    public static Drawable drawableFromUrl(String url) throws IOException {
-        Bitmap x;
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-        connection.connect();
-        InputStream input;
-        input = connection.getInputStream();
-        x = BitmapFactory.decodeStream(input);
-        return new BitmapDrawable(x);
-
-    }
     private class diaryFunctionality extends AsyncTask<String, String, String> {
 
         @Override
@@ -124,7 +133,16 @@ public class Tomorrow extends Activity {
             tomorrowAppointment.setAdapter(myAdapter);
             ArrayAdapter<Listee> myAdapter2 = getListeeArrayAdapter(local);
             tomorrowListee.setAdapter(myAdapter2);
-
+            View headerView = getLayoutInflater().inflate(R.layout.headerforlist, null);
+            TextView text = (TextView) headerView.findViewById(R.id.headerView);
+            text.setText("Lister");
+            text.setTextColor(Color.parseColor(styles[1]));
+            tomorrowListee.addHeaderView(headerView);
+            headerView = getLayoutInflater().inflate(R.layout.headerforlist, null);
+            text = (TextView) headerView.findViewById(R.id.headerView);
+            text.setText("Diary");
+            text.setTextColor(Color.parseColor(styles[1]));
+            tomorrowAppointment.addHeaderView(headerView);
         }
 
         private ArrayAdapter<Listee> getListeeArrayAdapter(final Context local) {
@@ -134,7 +152,8 @@ public class Tomorrow extends Activity {
                     View view = super.getView(position, convertView, parent);
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
                     TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-
+                    text1.setTextColor(Color.parseColor(styles[1]));
+                    text2.setTextColor(Color.parseColor(styles[1]));
                     text1.setText(myController.getLister().getListees().get(position).strLister_Title);
                     text2.setText("22332");
                     return view;
@@ -149,7 +168,8 @@ public class Tomorrow extends Activity {
                     View view = super.getView(position, convertView, parent);
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
                     TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-
+                    text1.setTextColor(Color.parseColor(styles[1]));
+                    text2.setTextColor(Color.parseColor(styles[1]));
                     text1.setText(tomorrowDiary.colAppointment.get(position).returnDateStartString());
                     text2.setText(tomorrowDiary.colAppointment.get(position).toString());
                     return view;
